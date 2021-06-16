@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
-
+import {clearPending} from '@/utils/https'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -20,6 +20,13 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  //在跳转路由之前，先清除所有的请求
+  clearPending()
+  // ...
+  next()
 })
 
 export default router
