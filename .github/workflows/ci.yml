@@ -25,9 +25,9 @@ jobs:
         uses: actions/checkout@master
       - name: use Node.js 14
       # 使用action库  actions/setup-node安装node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.5
         with:
-          node-version: 14
+          node-version: 14.x
       - run: pwd
       - run: npm install
       - run: npm run build
