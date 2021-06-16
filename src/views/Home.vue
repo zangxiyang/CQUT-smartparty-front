@@ -7,7 +7,6 @@
 import { defineComponent, reactive, toRefs } from 'vue'
 //引入接口
 import { UserService } from '@/api'
-import axios from "axios";
 
 export default defineComponent({
   setup() {
