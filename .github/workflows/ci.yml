@@ -28,9 +28,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
+      - run: pwd
       - run: npm install
       - run: npm run build
-        working-directory: ./dist
       - run: echo '构建成功....'
       
     # 第五步：部署到服务器 - 公有仓库可以这样部署
