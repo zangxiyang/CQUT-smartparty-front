@@ -2,13 +2,16 @@
   <input type="text" v-model="Account" placeholder="请输入账号" name="username" >
   <input type="text" v-model="Password" placeholder="请输入密码" name="username" >
   <button @click.prevent="handleLogin()">登录</button>
+  <Footer/>
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
 //引入接口
 import { UserService } from '@/api'
+import Footer from "@/components/Footer.vue";
 
 export default defineComponent({
+  components: {Footer},
   setup() {
     const state = reactive({
       Account: 'admin', //账户

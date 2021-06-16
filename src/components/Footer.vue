@@ -28,14 +28,12 @@
           <el-tooltip placement="top" effect="light" content="本站每日一言由 'Hitokoto' 提供">
             <a href="https://hitokoto.cn/" target="_blank">
               一言
-
             </a>
           </el-tooltip>
         </div>
         <div class="state-item">
           <el-tooltip placement="top" effect="light" content="本站CDN加速由又拍云提供" :offset="30">
             <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
-              <icon-font name="iconyoupaiyun-copy-copy-copy" size="70px"/>
             </a>
           </el-tooltip>
         </div>
@@ -53,7 +51,6 @@ import {defineComponent, ref} from 'vue';
 
 export default defineComponent({
   name: "Footer",
-  components: {IconFont},
   setup() {
     const date = ref<string>(new Date().getFullYear().toString());
     return {date}

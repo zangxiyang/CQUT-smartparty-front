@@ -5,12 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "serve:dev": "cross-env NODE_ENV=development dotenv -e .env.dev vue-cli-service serve",
-    "serve:prod": "cross-env NODE_ENV=production dotenv -e .env.prod vue-cli-service serve",
-    "build:prod": "cross-env NODE_ENV=production dotenv -e .env.prod vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "build:prod": "cross-env NODE_ENV=production dotenv -e .env.prod vue-cli-service build",
+    "json_server": "json-server src/mock/db.js --watch",
     "mock": "cd src/mock && ts-node-dev index.ts",
-    "json_server": "json-server src/mock/db.js --watch"
+    "serve:dev": "cross-env NODE_ENV=development dotenv -e .env.dev vue-cli-service serve",
+    "serve:prod": "cross-env NODE_ENV=production dotenv -e .env.prod vue-cli-service serve"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -38,12 +38,13 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
     "fork-ts-checker-webpack-plugin": "^6.2.10",
-    "webpack": "^4.44.2",
     "mockjs": "^1.1.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "typescript": "~4.1.5",
-    "vue-loader-v16": "^16.0.0-beta.5.4"
+    "vue-cli-plugin-element-plus": "0.0.13",
+    "vue-loader-v16": "^16.0.0-beta.5.4",
+    "webpack": "^4.44.2"
   },
   "eslintConfig": {
     "root": true,
@@ -51,14 +52,13 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/vue3-essential",
+      "plugin:vue/essential",
       "eslint:recommended",
       "@vue/typescript/recommended"
     ],
     "parserOptions": {
       "ecmaVersion": 2020
-    },
-    "rules": {}
+    }
   },
   "browserslist": [
     "> 1%",

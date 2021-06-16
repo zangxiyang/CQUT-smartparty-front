@@ -10,3 +10,4 @@ declare module '*.vue' {
 
 declare module 'mockjs'
 declare module 'element-plus'
+declare module '*'
