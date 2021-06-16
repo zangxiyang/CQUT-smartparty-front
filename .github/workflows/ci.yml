@@ -23,10 +23,16 @@ jobs:
       # 下载源码
       - name: Checkout
         uses: actions/checkout@master
+      - name: use Node.js 10
+      # 使用action库  actions/setup-node安装node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
       - run: npm install
       - run: npm run build
         working-directory: ./dist
       - run: echo '构建成功....'
+      
     # 第五步：部署到服务器 - 公有仓库可以这样部署
       - name: Delete before Version
         uses: appleboy/ssh-action@master # 使用ssh链接服务器
