@@ -28,7 +28,9 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           node-version: 14.x
+          registry-url: https://npm.pkg.github.com
       - run: pwd
+      - run: sudo npm cache clean -f
       - run: npm install
       - run: npm run build
       - run: echo '构建成功....'
