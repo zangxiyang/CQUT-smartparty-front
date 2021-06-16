@@ -7,20 +7,21 @@
         @select="handleSelect"
         background-color="#A51211"
         text-color="#fff"
-        active-text-color="#ffd04b">
+        active-text-color="#ffd04b"
+        router>
       <el-submenu index="1">
         <template #title>党务工作</template>
-        <el-menu-item index="1-2">全体党员信息</el-menu-item>
-        <el-menu-item index="1-3">支部工作计划</el-menu-item>
-        <el-menu-item index="1-5">支部工作总结</el-menu-item>
+        <el-menu-item index="1-1" route="/">全体党员信息</el-menu-item>
+        <el-menu-item index="1-2">支部工作计划</el-menu-item>
+        <el-menu-item index="1-3">支部工作总结</el-menu-item>
         <el-submenu index="1-4">
           <template #title>书记述职</template>
           <el-menu-item index="1-4-1">述职报告</el-menu-item>
           <el-menu-item index="1-4-2">支部年度考核等级</el-menu-item>
         </el-submenu>
-        <el-menu-item index="1-6">书记讲党课</el-menu-item>
-        <el-menu-item index="1-7">党组织关系转接</el-menu-item>
-        <el-menu-item index="1-8">党费缴纳</el-menu-item>
+        <el-menu-item index="1-5">书记讲党课</el-menu-item>
+        <el-menu-item index="1-6">党组织关系转接</el-menu-item>
+        <el-menu-item index="1-7">党费缴纳</el-menu-item>
       </el-submenu>
       <el-submenu index="2">
         <template #title>三会一课</template>
@@ -62,15 +63,15 @@
 
 <script lang="ts">
 import {defineComponent, ref} from "vue"
-import {useRouter} from "vue-router"
+// import {useRouter} from "vue-router"
 
 export default defineComponent({
   setup() {
-    const activeIndex = ref('1-2')
-    const router = useRouter()
+    const activeIndex = ref('1-1')
+    // const router = useRouter()
     const handleSelect = (key: string, keyPath: string) => {
       console.log(key, keyPath)
-      router.push(key)
+      // router.push(key)
     }
     return {
       activeIndex,
