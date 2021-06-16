@@ -23,7 +23,7 @@ jobs:
       # 下载源码
       - name: Checkout
         uses: actions/checkout@master
-      - name: use Node.js 10
+      - name: use Node.js 14
       # 使用action库  actions/setup-node安装node
         uses: actions/setup-node@v1
         with:
