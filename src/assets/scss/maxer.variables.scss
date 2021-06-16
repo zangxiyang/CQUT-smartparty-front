@@ -1,0 +1,36 @@
+// 自适应变量map
+$maxer-medias: (
+        xs: 768px,
+        sm: 768px,
+        md: 992px,
+        lg: 1200px
+);
+
+// 引入Google 思源宋体
+
+
+// 字体变量
+
+$maxer-article-font-family: 'Roboto Slab',"Noto Serif SC",-apple-system,serif,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+$maxer-site-font-family: 'Roboto Slab',-apple-system,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+$maxer-code-font-family: 'Fira Mono',Menlo,Monaco,Consolas,monospace;
+
+// 颜色变量
+$maxer-nav-item-normal-color: #fff; // 头部导航item常规颜色
+$maxer-nav-item-active-color: rgba(177,84,53,.7); // 头部导航item选中颜色
+$maxer-nav-dropdown-item-normal-color: #343a40;
+$maxer-normal-background-color: rgba(255,255,255,.95);
+$maxer-a-hover-color: #ac633b;
+$maxer-hover-default-background-color: rgba(168, 168, 168, 0.1);
+$maxer-text-normal-color: #111;
+$maxer-dropdown-text-normal-color: #606266; // 下拉框文字默认颜色
+$maxer-dropdown-border-normal-color: #ebeef5; // 下拉框边框默认颜色
+
+$maxer-userName-default-color: #444;
+$maxer-userName-super-color:rgb(251, 114, 153);
+
+
+$maxer-danger-color: #F56C6C;
+$maxer-warning-color: #dea832;
+$maxer-normal-color: #ac633b;
+$maxer-success-color: #35b92c;

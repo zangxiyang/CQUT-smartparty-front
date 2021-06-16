@@ -1,0 +1,102 @@
+// 引入响应式
+@import "maxer.media";
+// 引入基础库
+@import "maxer.base";
+// 引入变量池
+@import "maxer.variables";
+
+// 清除浏览器自带基础样式
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+}
+a{
+  color: #111;
+  text-decoration: none;
+}
+::selection {
+  color: #fff;
+  background: #c68556;
+}
+::-moz-selection{
+  color: #fff;
+  background: #c68556;
+}
+input:-webkit-autofill{
+  -webkit-text-fill-color: inherit;
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+  &:hover,&:active,&:focus{
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+  }
+}
+
+
+// 覆写yue
+.yue ::selection {
+  color: #fff;
+  background-color: #c68556 !important;
+}
+.yue ::-moz-selection {
+  color: #fff;
+  background-color: #c68556 !important;
+}
+@media (min-width: 1100px) {
+  .yue blockquote {
+    margin-left: 0 !important;
+  }
+}
+.yue blockquote {
+  border-left: 3px solid #9c9c9c !important;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  color: #5a5a5a !important;
+}
+.yue code{
+  padding: 4px 3px !important;
+  border-radius: 5px !important;
+  border: 1px solid #8e8787 ;
+}
+.yue .maxer-code{
+  border-left: none;
+}
+
+body{
+  background: #f5f5f5;
+}
+
+/*--------------- 字体设置开始 ----------------*/
+body{
+  font-family: $maxer-site-font-family;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+/*--------------- 字体设置结束 ----------------*/
+
+/*-----------响应式开始-----------------*/
+
+@media (max-width: map-get($maxer-medias,xs)){
+  @include xs
+}
+@media (min-width: map-get($maxer-medias,sm)){
+  @include sm
+}
+@media (min-width: map-get($maxer-medias,md)){
+  @include md
+}
+@media (min-width: map-get($maxer-medias,lg)) {
+  @include lg
+}
+/*-----------响应式结束-----------------*/
+
+// iconfont 基本样式
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}

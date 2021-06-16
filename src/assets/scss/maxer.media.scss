@@ -1,0 +1,125 @@
+@mixin xs(){
+  // 当设备宽度 < 768px 一般指手机设备
+  .maxer-container{
+    max-width: 540px;
+    &.maxer-article{
+      max-width: 440px;
+    }
+  }
+  // Header适配
+  #maxer-header{
+    min-height: 250px;
+    #bigHalfCircle{
+      display: none;
+    }
+    .typed-text{
+      font-size: 24px;
+    }
+    .typed-cursor {
+      font-size: 24px;
+    }
+  }
+  // 文章列表适配
+  .maxer-article-item{
+    .article-header{
+      height: 140px;
+    }
+    .article-title{
+      h2{
+        font-size: 1.2em;
+        line-height: 1.2em;
+      }
+    }
+  }
+  // card 适配
+  .maxer-card-container{
+    margin: 0 15px;
+  }
+}
+
+@mixin sm(){
+  // 当设备宽度 ≥ 768px 一般指平板设备
+  .maxer-container{
+    max-width: 720px;
+    &.maxer-article{
+      max-width: 610px;
+    }
+    .typed-text{
+      font-size: 24px;
+    }
+    .typed-cursor {
+      font-size: 24px;
+    }
+  }
+  // Header适配
+  #maxer-header{
+    min-height: 400px;
+    #bigHalfCircle{
+      display: none;
+    }
+  }
+  // 文章列表适配
+  .maxer-article-item{
+    .article-header{
+      height: 180px;
+    }
+    .article-title{
+      h2{
+        font-size: 1.2em;
+        line-height: 1.2em;
+      }
+    }
+  }
+}
+
+@mixin md(){
+  // 当设备宽度 ≥ 992px 一般指中型台式机
+  .maxer-container{
+    max-width: 960px;
+    &.maxer-article{
+      max-width: 720px;
+    }
+    #maxer-header{
+      min-height: 480px;
+    }
+  }
+  // Header适配
+  #maxer-header{
+    #bigHalfCircle{
+      display: block;
+    }
+    .typed-text{
+      font-size: 30px;
+    }
+    .typed-cursor {
+      font-size: 30px;
+    }
+  }
+  // 文章列表适配
+  .maxer-article-item{
+    .article-header{
+      height: 220px;
+    }
+  }
+}
+@mixin lg(){
+  // 当设备宽度 ≥ 1200px 一般指大型台式机
+  .maxer-container{
+    max-width: 1140px;
+    &.maxer-article{
+      max-width: 860px;
+    }
+  }
+  // 文章列表适配
+  .maxer-article-item{
+    .article-header{
+      height: 250px;
+    }
+    .article-title{
+      h2{
+        font-size: 1.4em;
+        line-height: 1.4em;
+      }
+    }
+  }
+}
