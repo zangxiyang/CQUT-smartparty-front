@@ -1,6 +1,6 @@
 <template>
   <base-content-layout>
-    <select-container title="党支部" :items="parties" v-model="test"/>
+    <select-container title="党支部" :items="parties" v-model:activeItem="test" @change="testChange"/>
     <card-view>
       <member-list/>
     </card-view>
@@ -15,22 +15,26 @@
  * 时间: 2021/6/16
  * 版本: V1
  */
-import {defineComponent} from 'vue';
+import {defineComponent, ref} from 'vue';
 import BaseContentLayout from "@/layout/BaseContentLayout.vue";
 import SelectContainer from "@/components/SelectContainer.vue";
 import CardView from "@/components/CardView.vue";
 import MemberList from "@/components/MemberList.vue";
 
-// import {PartyBranch} from "@/utils/Interfaces";
-
-interface PartyBranch {
-  name: string,   // 支部名称
-  value: string   // 向后端请求的值
-}
+import {PartyBranch} from "@/utils/Interfaces";
 
 export default defineComponent({
   name: "AllPartyMember",
   components: {MemberList, CardView, SelectContainer, BaseContentLayout},
+  setup(){
+    const test = ref('0');
+    const testChange = ()=>{
+      console.log(`当前选中的项：${test.value}`);
+    }
+    return{
+      testChange,test
+    }
+  },
   data() {
     return {
       parties: [
@@ -77,7 +81,6 @@ export default defineComponent({
           value: '10'
         },
       ] as PartyBranch[],
-      test: '0'
     }
   }
 })
