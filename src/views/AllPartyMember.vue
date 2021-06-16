@@ -1,6 +1,6 @@
 <template>
   <base-content-layout>
-    <select-container title="党支部" :items="parties" v-model:activeItem="test" @change="testChange"/>
+    <select-container title="党支部" :items="parties" v-model="test" @change="testChange"/>
     <card-view>
       <member-list/>
     </card-view>

@@ -22,7 +22,7 @@ import {PartyBranch} from '@/utils/Interfaces'
 
 export default defineComponent({
   name: "SelectContainer",
-  emits: ['change','update:activeItem'],
+  emits: ['change','update:modelValue'],
   props: {
     title: {
       type: String,
@@ -30,12 +30,12 @@ export default defineComponent({
       default: () => '筛选条件'
     },
     items: Array as PropType<PartyBranch[]>,
-    activeItem: String
+    modelValue: String
   },
   setup(props, {emit}) {
     const active = ref(computed({
-      get: ()=> props.activeItem || '',
-      set: v=> {emit('update:activeItem',v)}
+      get: ()=> props.modelValue || '',
+      set: v=> {emit('update:modelValue',v)}
     }));
     return {
       active
