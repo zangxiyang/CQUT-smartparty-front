@@ -10,7 +10,6 @@
         active-text-color="#ffd04b">
       <el-submenu index="1">
         <template #title>党务工作</template>
-        <el-menu-item index="1-1">党支部委员会</el-menu-item>
         <el-menu-item index="1-2">全体党员信息</el-menu-item>
         <el-menu-item index="1-3">支部工作计划</el-menu-item>
         <el-menu-item index="1-3">支部工作总结</el-menu-item>
@@ -67,7 +66,7 @@ import {useRouter} from "vue-router"
 
 export default defineComponent({
   setup() {
-    const activeIndex = ref('1-1')
+    const activeIndex = ref('1-2')
     const router = useRouter()
     const handleSelect = (key: string, keyPath: string) => {
       console.log(key, keyPath)
