@@ -1,6 +1,10 @@
 <template>
   <Header/>
   <Nav/>
+  <main>
+    <!--内容页-->
+    <RouterView/>
+  </main>
   <Footer/>
 </template>
 

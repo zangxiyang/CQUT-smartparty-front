@@ -1,5 +1,5 @@
 <template>
-  <footer id="maxer-footer">
+  <footer id="maxer-footer" class="mt-20">
     <div class="maxer-container">
 
       <div class="f-jc-c al-c">

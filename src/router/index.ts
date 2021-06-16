@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
 import {clearPending} from '@/utils/https'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'AllPartyMember',
+    component: ()=> import('../views/AllPartyMember.vue')
   },
   // {
   //   path: '/about',
