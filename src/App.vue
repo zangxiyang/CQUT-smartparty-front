@@ -9,14 +9,17 @@
     <el-button type="primary">el-button</el-button>
   </div>
   <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Footer/>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import Footer from "@/components/Footer";
 
 export default {
   name: 'App',
   components: {
+    Footer,
     HelloWorld
   }
 }
