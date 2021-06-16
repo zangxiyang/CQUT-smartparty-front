@@ -1,13 +1,16 @@
 <template>
   <Header/>
   <Nav/>
+  <Assembly/>
+<!--  <router-view></router-view>-->
   <Footer/>
 </template>
 
 <script>
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Footer from "@/components/Footer"
+import Header from "@/components/Header"
 import Nav from "@/components/Nav";
+import Assembly from "@/views/ThreeMeetLesson/Assembly";
 
 export default {
   name: 'App',
@@ -15,15 +18,10 @@ export default {
     Header,
     Footer,
     Nav,
+    Assembly
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
 </style>
