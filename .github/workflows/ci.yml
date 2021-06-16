@@ -30,6 +30,10 @@ jobs:
           node-version: 14.x
           registry-url: https://npm.pkg.github.com
       - run: pwd
+      - run: |
+          ls
+          rm -rf package-lock.json
+          echo "删除成功"
       - run: sudo npm cache clean -f
       - run: npm install
       - run: npm run build
