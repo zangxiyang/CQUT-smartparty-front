@@ -3,6 +3,7 @@
     <select-container title="党支部" :items="parties" v-model="test" @change="testChange"/>
     <card-view>
       <member-list/>
+
     </card-view>
   </base-content-layout>
 </template>

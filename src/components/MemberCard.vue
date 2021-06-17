@@ -1,5 +1,5 @@
 <template>
-  <div class="member-card flex f-col">
+  <div class="member-card flex f-col mb-10">
     <div class="header">
       <el-image :src="img" fit="fill" v-if="img != null" style="height: 100%"/>
       <el-image :src="require('@/assets/img/member.png')" fit="fill" v-else style="height: 100%"/>
@@ -26,9 +26,6 @@ export default defineComponent({
     name: String,
     img: String,
     id: String
-  },
-  mounted() {
-    console.log(this.img != null)
   }
 })
 </script>
