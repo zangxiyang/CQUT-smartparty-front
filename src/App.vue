@@ -2,6 +2,7 @@
   <Header/>
   <Nav/>
   <main>
+    <!--<breadcrumb-nav/>-->
     <!--内容页-->
     <RouterView v-slot="{Component}">
       <keep-alive v-if="$route.meta.keepAlive">
@@ -19,10 +20,12 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
+import BreadcrumbNav from "@/components/BreadcrumbNav";
 
 export default {
   name: 'App',
   components: {
+    BreadcrumbNav,
     Header,
     Footer,
     Nav,

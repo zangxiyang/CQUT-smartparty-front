@@ -6,7 +6,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'AllPartyMember',
     component: ()=> import('../views/AllPartyMember.vue'),
     meta:{
-      keepAlive: true
+      keepAlive: true,
+      breadNavText: '首页'
     }
   },
   {
@@ -15,9 +16,12 @@ const routes: Array<RouteRecordRaw> = [
     component: ()=> import('../views/MemberDetail.vue'),
     props: true,
     meta:{
-      keepAlive: true
+      keepAlive: true,
+      parent: 'AllPartyMember',
+      breadNavText: '党员详情'
     }
   }
+
   // {
   //   path: '/about',
   //   name: 'About',

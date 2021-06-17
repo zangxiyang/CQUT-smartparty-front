@@ -1,7 +1,7 @@
 <template>
   <div class="member-card flex f-col mb-10 cur-p">
     <div class="header">
-      <el-image :src="img" fit="fill" v-if="img != null" style="height: 100%"/>
+      <el-image :src="img" fit="fill" v-if="img != null" style="height: 100%;width:100%;"/>
       <el-image :src="require('@/assets/img/member.png')" fit="fill" v-else style="height: 100%"/>
     </div>
     <div class="name f-jc-c al-c">

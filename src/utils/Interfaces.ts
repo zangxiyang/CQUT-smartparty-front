@@ -16,8 +16,13 @@ interface MemberList {
     img: string,    // 照片url
     id: string      // 当前党员的id，以便于查看党员的详细信息
 }
-
+interface BreadNav {
+    name: string;
+    path: string;
+    text: string;
+    parent: BreadNav | null;
+}
 
 export {
-    PartyBranch, MemberList
+    PartyBranch, MemberList,BreadNav
 }
