@@ -2,7 +2,7 @@
 <div class="party-member-list">
   <el-row :gutter="20" type="flex">
     <el-col :span="3" v-for="item in testList" :key="item.id">
-      <member-card :id="item.id" :img="item?.img" :name="item.name"/>
+      <member-card :id="item.id" :img="item?.img" :name="item.name" @click="onCardClick(item.id)"/>
     </el-col>
   </el-row>
   <div class="party-pagination f-jc-c al-c">
@@ -20,6 +20,7 @@
  * 版本: V1
 */
 import {defineComponent, PropType, reactive, ref,toRefs} from 'vue';
+import {useRouter} from "vue-router";
 import {MemberList} from "@/utils/Interfaces";
 import MemberCard from "@/components/MemberCard.vue";
 
@@ -32,8 +33,9 @@ export default defineComponent({
     }
   },
   setup(){
-    //
+    // 测试数据
     const testList = [];
+    const router = useRouter();
     for (let i = 0 ; i < 30; i ++){
       let tmp = {
         name: `测试姓名${i}`,
@@ -45,8 +47,16 @@ export default defineComponent({
     const testListRef = reactive({
       testList: testList
     })
+
+    // 卡片点击跳转事件
+    const onCardClick = (id: string)=>{
+      // 跳转到党员详情页面
+      router.push(`/member/${id}`);
+    }
+
     return {
-      ...toRefs(testListRef)
+      ...toRefs(testListRef),
+      onCardClick
     }
   }
 })

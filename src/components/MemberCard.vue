@@ -1,5 +1,5 @@
 <template>
-  <div class="member-card flex f-col mb-10">
+  <div class="member-card flex f-col mb-10 cur-p">
     <div class="header">
       <el-image :src="img" fit="fill" v-if="img != null" style="height: 100%"/>
       <el-image :src="require('@/assets/img/member.png')" fit="fill" v-else style="height: 100%"/>
@@ -41,7 +41,8 @@ export default defineComponent({
     overflow: hidden;
   }
   .name{
-
+    padding: 2px;
+    user-select: none;
   }
 }
 </style>

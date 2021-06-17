@@ -4,8 +4,20 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'AllPartyMember',
-    component: ()=> import('../views/AllPartyMember.vue')
+    component: ()=> import('../views/AllPartyMember.vue'),
+    meta:{
+      keepAlive: true
+    }
   },
+  {
+    path: '/member/:id',
+    name: 'MemberDetail',
+    component: ()=> import('../views/MemberDetail.vue'),
+    props: true,
+    meta:{
+      keepAlive: true
+    }
+  }
   // {
   //   path: '/about',
   //   name: 'About',
@@ -27,5 +39,10 @@ router.beforeEach((to, from, next) => {
   // ...
   next()
 })
-
+router.afterEach(()=>{
+  // 保证切换路由的时候，页面在最顶部
+  window.scrollTo({
+    top: 0
+  });
+})
 export default router

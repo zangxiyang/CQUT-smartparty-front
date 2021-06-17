@@ -15,13 +15,14 @@
         </a>
       </div>
       <div class="bottom-state f-jc-c al-c mt-5">
-        <div class="state-item">
+        <!--todo-->
+        <!--<div class="state-item">
           <el-tooltip placement="top" effect="light" content="本站托管于阿里云" :offset="35">
             <a href="https://www.aliyun.com/" target="_blank">
               <icon-font name="iconaliyun1" size="80px"/>
             </a>
           </el-tooltip>
-        </div>
+        </div>-->
         <div class="state-item">
           <!--todo-->
         </div>
