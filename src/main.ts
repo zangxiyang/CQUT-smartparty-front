@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import installMaxerStore, {Maxer} from './store/maxer.mixin'
+import initStorePersistence from './store/store.persistence'
+
 // 引入 maxer 核心 scss
 import './assets/scss/maxer.core.scss'
 
@@ -14,6 +17,7 @@ declare module '@vue/runtime-core' {
     interface ComponentCustomProperties {
         $message: typeof ElMessage; // 加入全局message
         $notify: typeof  ElNotification; // 加入全局notify
+        $m: Maxer;  // 声明全局方法
     }
 }
 
@@ -28,4 +32,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 const app = createApp(App)
 installElementPlus(app)
+installMaxerStore(app) // 全局混入vuex
+initStorePersistence(store) // 初始化持久化vuex
 app.use(store).use(router).mount('#app')

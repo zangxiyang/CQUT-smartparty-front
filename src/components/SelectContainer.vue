@@ -6,7 +6,7 @@
     <div class="right-content">
       <el-row :gutter="20" type="flex">
         <el-col v-for="item in items" :key="item.value" :span="4">
-          <el-radio v-model="activeItem" border  :label="item.value" size="mini" @change="changeActive">
+          <el-radio v-model="active" border  :label="item.value" size="mini" @change="$emit('change')">
             {{ item.name }}
           </el-radio>
         </el-col>
@@ -17,28 +17,28 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType, ref,} from 'vue';
+import {defineComponent, PropType, ref, computed} from 'vue';
 import {PartyBranch} from '@/utils/Interfaces'
 
 export default defineComponent({
   name: "SelectContainer",
+  emits: ['change','update:modelValue'],
   props: {
     title: {
       type: String,
       required: false,
       default: () => '筛选条件'
     },
-    items: Array as PropType<PartyBranch[]>
+    items: Array as PropType<PartyBranch[]>,
+    modelValue: String
   },
   setup(props, {emit}) {
-    const activeItem = ref<string>(); // 当前选中的项
-
-    function changeActive(): void{
-      console.log(`当前选中的项目：${activeItem.value}`);
-      emit('update:activeItem',activeItem.value);
-    }
+    const active = ref(computed({
+      get: ()=> props.modelValue || '',
+      set: v=> {emit('update:modelValue',v)}
+    }));
     return {
-      activeItem,changeActive
+      active
     }
   }
 })

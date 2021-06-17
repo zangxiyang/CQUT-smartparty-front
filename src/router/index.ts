@@ -6,11 +6,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'AllPartyMember',
     component: ()=> import('../views/AllPartyMember.vue')
   },
-  {
-    path: '/assembly',
-    name: 'Assembly',
-    component: ()=> import('../views/ThreeMeetLesson/Assembly.vue')
-  }
   // {
   //   path: '/about',
   //   name: 'About',

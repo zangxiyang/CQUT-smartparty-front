@@ -11,9 +11,18 @@ interface PartyBranch{
     value: string   // 向后端请求的值
 }
 
-
-
+interface MemberList {
+    name: string,   // 姓名
+    img: string,    // 照片url
+    id: string      // 当前党员的id，以便于查看党员的详细信息
+}
+interface BreadNav {
+    name: string;
+    path: string;
+    text: string;
+    parent: BreadNav | null;
+}
 
 export {
-    PartyBranch
+    PartyBranch, MemberList,BreadNav
 }
