@@ -2,34 +2,13 @@
 <div class="party-member-list">
   <el-row :gutter="20" type="flex">
     <el-col :span="3">
-      <div class="member-card flex f-col f-jc-c">
-        <div class="header">
-          <img src="../assets/img/member.png" alt="">
-        </div>
-        <div class="name">
-          姓名
-        </div>
-      </div>
+      <member-card name="测试姓名" id="1"/>
     </el-col>
     <el-col :span="3">
-      <div class="member-card flex f-col f-jc-c">
-        <div class="header">
-          <img src="../assets/img/member.png" alt="">
-        </div>
-        <div class="name">
-          姓名
-        </div>
-      </div>
+      <member-card name="测试姓名" id="1"/>
     </el-col>
     <el-col :span="3">
-      <div class="member-card flex f-col f-jc-c">
-        <div class="header">
-          <img src="../assets/img/member.png" alt="">
-        </div>
-        <div class="name">
-          姓名
-        </div>
-      </div>
+      <member-card name="测试姓名" id="1" img="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"/>
     </el-col>
   </el-row>
 </div>
@@ -43,12 +22,20 @@
  * 时间: 2021/6/16
  * 版本: V1
 */
-import {defineComponent} from 'vue';
+import {defineComponent, PropType} from 'vue';
+import {MemberList} from "@/utils/Interfaces";
+import MemberCard from "@/components/MemberCard.vue";
 
 export default defineComponent({
   name: "MemberList",
-  data() {
-    return {}
+  components: {MemberCard},
+  props:{
+    lists: {
+      type: Array as PropType<MemberList[]>
+    }
+  },
+  setup(){
+    //
   }
 })
 </script>
