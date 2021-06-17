@@ -21,10 +21,12 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
+import BaseContentLayout from "@/layout/BaseContentLayout";
 
 export default {
   name: 'App',
   components: {
+    BaseContentLayout,
     BreadcrumbNav,
     Header,
     Footer,
