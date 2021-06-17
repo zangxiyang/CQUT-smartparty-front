@@ -1,7 +1,7 @@
 <template>
 <div class="party-member-list">
   <el-row :gutter="20" type="flex">
-    <el-col :span="3" v-for="item in testList" :key="item.id">
+    <el-col :span="4" v-for="item in testList" :key="item.id">
       <member-card :id="item.id" :img="item?.img" :name="item.name" @click="onCardClick(item.id)"/>
     </el-col>
   </el-row>
@@ -36,7 +36,7 @@ export default defineComponent({
     // 测试数据
     const testList = [];
     const router = useRouter();
-    for (let i = 0 ; i < 30; i ++){
+    for (let i = 0 ; i < 20; i ++){
       let tmp = {
         name: `测试姓名${i}`,
         id: `${i}`,
