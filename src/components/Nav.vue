@@ -82,4 +82,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+nav{
+  ::v-deep{
+    .el-menu.el-menu--horizontal{
+      border-bottom: none;
+    }
+  }
+}
 </style>
