@@ -87,6 +87,15 @@ nav{
     .el-menu.el-menu--horizontal{
       border-bottom: none;
     }
+    .el-submenu .el-submenu__title i{
+      color: #fff;
+    }
+
   }
+}
+</style>
+<style>
+.el-popper .el-submenu .el-submenu__title i{
+  color: #fff;
 }
 </style>
