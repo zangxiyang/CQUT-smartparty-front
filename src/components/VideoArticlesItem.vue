@@ -21,7 +21,7 @@
     <div class="narrator-card f-jc-c al-c">
       {{ list.narrator }}
     </div>
-    <div class="btn-play"></div>
+    <div class="btn-play" v-if="video"></div>
   </div>
 </template>
 
@@ -50,6 +50,10 @@ export default defineComponent({
     list: {
       type: Object as PropType<ColumnProps>,
       required: true
+    },
+    video: {
+      type: Boolean,
+      default: ()=> true
     }
   },
   setup(props) {
