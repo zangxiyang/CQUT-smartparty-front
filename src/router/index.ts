@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
             keepAlive: true,
         }
     }, {
-        path: '/member/:id',
+        path: '/branch/member/:id',
         name: 'MemberDetail',
         component: () => import('../views/BranchManagement/AllMember/MemberDetail.vue'),
         meta: {
@@ -19,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         // 党费缴纳
-        path: '/partyFee',
+        path: '/branch/partyFee',
         name: 'PartyFeePayment',
         component: ()=> import('../views/BranchManagement/PartyFeePayment.vue')
     }
