@@ -22,7 +22,7 @@
             <el-menu-item index="1-4-2">支部年度考核等级</el-menu-item>
           </el-submenu>
           <el-menu-item index="1-5">书记讲党课</el-menu-item>
-          <el-menu-item index="1-6">党组织关系转接</el-menu-item>
+          <el-menu-item index="1-6" :route="{name: 'partyRelation'}">党组织关系转接</el-menu-item>
           <el-menu-item index="1-7" :route="{name: 'PartyFeePayment'}">党费缴纳</el-menu-item>
         </el-submenu>
         <el-submenu index="2">
@@ -34,7 +34,7 @@
         <el-submenu index="3">
           <template #title>党日活动</template>
           <el-menu-item index="3-1">主题党日</el-menu-item>
-          <el-menu-item index="3-2">民主评议</el-menu-item>
+          <el-menu-item index="3-2" :route="{name: 'DemocraticAppraisal'}">民主评议</el-menu-item>
           <el-menu-item index="3-3">志愿活动</el-menu-item>
           <el-menu-item index="3-4">重温入党誓词</el-menu-item>
         </el-submenu>
@@ -66,6 +66,7 @@
 
 <script lang="ts">
 import {defineComponent, ref} from "vue"
+import {clearPending} from "@/utils/https";
 // import {useRouter} from "vue-router"
 
 export default defineComponent({
@@ -74,6 +75,11 @@ export default defineComponent({
     // const router = useRouter()
     const handleSelect = (key: string, keyPath: string) => {
       console.log(key, keyPath)
+      if (key === "8"){
+        // 当前点击了支部大数据nav
+        clearPending();
+        window.location = process.env.VUE_APP_BIGDATA
+      }
       // router.push(key)
     }
     return {

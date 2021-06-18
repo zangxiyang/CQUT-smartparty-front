@@ -22,6 +22,17 @@ const routes: Array<RouteRecordRaw> = [
         path: '/branch/partyFee',
         name: 'PartyFeePayment',
         component: ()=> import('../views/BranchManagement/PartyFeePayment.vue')
+    },{
+        // 党组织关系转接
+        path: '/branch/partyRelation',
+        name: 'partyRelation',
+        component: ()=> import('../views/BranchManagement/PartyRelation.vue')
+    },
+    {
+        // 党日活动 -> 民主评议
+        path: '/activity/democratic',
+        name: 'DemocraticAppraisal',
+        component: ()=> import('../views/Activity/DemocraticAppraisal.vue')
     },
     {
         // 三会一课 -> 党员大会
