@@ -27,7 +27,10 @@ const routes: Array<RouteRecordRaw> = [
         // 三会一课 -> 党员大会
         path: '/meeting/assembly',
         name: 'Assembly',
-        component: ()=> import('../views/ThreeMeetLesson/Assembly.vue')
+        component: ()=> import('../views/ThreeMeetLesson/Assembly.vue'),
+        meta:{
+            keepAlive: true
+        }
     }
     // {
     //   path: '/about',
