@@ -5,23 +5,23 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'AllPartyMember',
-        component: () => import('../views/AllPartyMember.vue'),
+        component: () => import('../views/BranchManagement/AllMember/AllPartyMember.vue'),
         meta: {
             keepAlive: true,
         }
     }, {
         path: '/member/:id',
         name: 'MemberDetail',
-        component: () => import('../views/MemberDetail.vue'),
+        component: () => import('../views/BranchManagement/AllMember/MemberDetail.vue'),
         meta: {
             keepAlive: true
         }
     },
     {
-        path: '/assembly',
-        name: 'Assembly',
-        component: () => import('../views/ThreeMeetLesson/Assembly.vue')
-
+        // 党费缴纳
+        path: '/partyFee',
+        name: 'PartyFeePayment',
+        component: ()=> import('../views/BranchManagement/PartyFeePayment.vue')
     }
     // {
     //   path: '/about',

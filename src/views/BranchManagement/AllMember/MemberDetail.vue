@@ -204,7 +204,7 @@ export default defineComponent({
   z-index: -1;
   width: 100%;
   height: 300px;
-  background: url("../assets/img/detail_bg_1920.jpg") no-repeat;
+  background: url("../../../assets/img/detail_bg_1920.jpg") no-repeat;
   background-size: 100% 100%;
   &::before{
     content: "";
