@@ -12,6 +12,9 @@ module.exports = {
         ecmaVersion: 2020
     },
     rules: {
+        // 解决 Require 类型报错
+        '@typescript-eslint/no-var-requires': 0,
+        "@typescript-eslint/ban-ts-comment": "off",
         "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
         "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
         "vue/no-multiple-template-root": 0
