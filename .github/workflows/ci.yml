@@ -36,7 +36,7 @@ jobs:
           echo "删除成功"
       - run: sudo npm cache clean -f
       - run: npm install
-      - run: npm run build
+      - run: npm run build:prod
       - run: echo '构建成功....'
       
     # 第五步：部署到服务器 - 公有仓库可以这样部署
