@@ -24,8 +24,8 @@ const routes: Array<RouteRecordRaw> = [
         component: ()=> import('../views/BranchManagement/PartyFeePayment.vue')
     },
     {
-        // 三会一课
-        path: '/assembly',
+        // 三会一课 -> 党员大会
+        path: '/meeting/assembly',
         name: 'Assembly',
         component: ()=> import('../views/ThreeMeetLesson/Assembly.vue')
     }

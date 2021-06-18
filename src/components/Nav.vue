@@ -23,11 +23,11 @@
           </el-submenu>
           <el-menu-item index="1-5">书记讲党课</el-menu-item>
           <el-menu-item index="1-6">党组织关系转接</el-menu-item>
-          <el-menu-item index="1-7" route="/partyFee">党费缴纳</el-menu-item>
+          <el-menu-item index="1-7" :route="{name: 'PartyFeePayment'}">党费缴纳</el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template #title>三会一课</template>
-          <el-menu-item index="/assembly">党员大会</el-menu-item>
+          <el-menu-item index="2-1" :route="{name: 'Assembly'}">党员大会</el-menu-item>
           <el-menu-item index="2-2">党支部委员会会议</el-menu-item>
           <el-menu-item index="2-3">党课</el-menu-item>
         </el-submenu>
