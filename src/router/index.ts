@@ -31,6 +31,15 @@ const routes: Array<RouteRecordRaw> = [
         meta:{
             keepAlive: true
         }
+    },
+    {
+        // 学习培训->书记轮训
+        path: '/train/assembly',
+        name: 'SecretaryTrain',
+        component: ()=> import('../views/TrainingAndLearning/SecretaryTrain.vue'),
+        meta:{
+            keepAlive: true
+        }
     }
     // {
     //   path: '/about',
