@@ -1,6 +1,7 @@
 <template>
   <div class="content">
     <video-articles-item  v-for="item in list" :list="item" :key="item.id"></video-articles-item>
+    <!--<video-article-item :list="item" v-for="item in list" :key="item.id"/>-->
     <div v-if="list.length%2 > 0">
       <div class="is_odd" v-for="item in (2-list.length%2)" :key="item"></div>
     </div>
@@ -14,6 +15,7 @@
 import {defineComponent, PropType} from 'vue';
 import VideoArticlesItem from './VideoArticlesItem.vue'
 import {ColumnProps} from "@/components/VideoArticlesItem.vue";
+import VideoArticleItem from "@/components/VideoArticleItem.vue";
 
 
 interface PartyBranch {
@@ -32,7 +34,7 @@ export default defineComponent({
       required:true
     }
   },
-  components: {VideoArticlesItem},
+  components: {VideoArticlesItem,},
   setup(){
 
     return {
@@ -92,6 +94,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .content{
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content:space-around;
@@ -100,8 +103,8 @@ export default defineComponent({
 }
 .is_odd{
   content: '';
-  width: 400px;
-  height: 380px;
+  width: 430px;
+  height: 270px;
   border:1px solid transparent;
   padding: 5px;
   overflow: hidden;
