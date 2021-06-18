@@ -51,7 +51,7 @@ export default defineComponent({
     // 卡片点击跳转事件
     const onCardClick = (id: string)=>{
       // 跳转到党员详情页面
-      router.push(`/member/${id}`);
+      router.push(`/branch/member/${id}`);
     }
 
     return {
