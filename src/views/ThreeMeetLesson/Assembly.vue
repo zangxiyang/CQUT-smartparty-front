@@ -2,7 +2,7 @@
   <base-content-layout>
     <select-container title="党支部" :items="parties" v-model="test"/>
     <card-view>
-      <listbox-item :list="list"></listbox-item>
+      <video-articles-list :list="listArr"></video-articles-list>
     </card-view>
   </base-content-layout>
 </template>
@@ -19,7 +19,7 @@ import {defineComponent} from 'vue';
 import BaseContentLayout from "@/layout/BaseContentLayout.vue";
 import SelectContainer from "@/components/SelectContainer.vue";
 import CardView from "@/components/CardView.vue";
-import ListboxItem,{ColumnProps}from "@/components/ListboxItem.vue";
+import VideoArticlesList from "@/components/VideoArticlesList.vue";
 
 // import {PartyBranch} from "@/utils/Interfaces";
 
@@ -29,17 +29,35 @@ interface PartyBranch {
 }
 
 export default defineComponent({
-  name: "AllPartyMember",
-  components: {ListboxItem, CardView, SelectContainer, BaseContentLayout},
+  name: "Assembly",
+  components: {VideoArticlesList, CardView, SelectContainer, BaseContentLayout},
   setup(){
-    const list = {
-      href:'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
-      title: 'xiaoliasd      asfasfasdfasdfasdfasdfwefv gdfg sdgfhmn fgh jmghjm,ghdgf ',
-      narrator:"sdsdsd",
-      time: '2020-05-15'
-    }
+    const listArr =[{
+      id:'1',
+      href:'https://z3.ax1x.com/2021/06/17/2zmvy6.jpg',
+      tag:'党员大会',
+      title: '我叫江小白生活很简单 asfasfasdfasdfasdfasdfwefv gdfg sdgfhmn fgh jmghjm,ghdgf ',
+      narrator:"俞书记",
+      time: '2021年5月14日/15日 19:30'
+    },{
+      id:'2',
+      href:'https://z3.ax1x.com/2021/06/17/2zmvy6.jpg',
+      tag:'党员大会',
+      title: '我叫江小白生活很简单 asfasfasdfasdfasdfasdfwefv gdfg sdgfhmn fgh jmghjm,ghdgf ',
+      narrator:"俞书记",
+      time: '2021年5月14日/15日 19:30'
+    },
+      {
+        id:'3',
+        href:'https://z3.ax1x.com/2021/06/17/2zmvy6.jpg',
+        tag:'党员大会',
+        title: '我叫江小白生活很简单 asfasfasdfasdfasdfasdfwefv gdfg sdgfhmn fgh jmghjm,ghdgf ',
+        narrator:"俞书记",
+        time: '2021年5月14日/15日 19:30'
+      }]
+
     return {
-      list
+      listArr
     }
   },
   data() {
@@ -94,6 +112,12 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.content{
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content:space-around;
+  align-items:center;
+}
 
 </style>

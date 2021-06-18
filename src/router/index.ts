@@ -4,16 +4,31 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'AllPartyMember',
-    component: ()=> import('../views/AllPartyMember.vue')
+    component: ()=> import('../views/AllPartyMember.vue'),
+    meta:{
+      keepAlive:true,
+      bradNavText:'首页'
+    }
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
+  {
+    path:'/member/:id',
+    name:'MemberDetail',
+    component:()=>import('../views/MemberDetail.vue'),
+    props:true,
+    meta:{
+      keepAlive: true,
+      parent:'AllPartyMember',
+      breadNavText:'党员详情'
+    }
+  },
+  //  三会一课
+  {
+    path: '/assembly',
+    name: 'Assembly',
+    component: ()=> import('../views/ThreeMeetLesson/Assembly.vue'),
+  },
+
+
 ]
 
 const router = createRouter({
