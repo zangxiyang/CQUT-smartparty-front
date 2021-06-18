@@ -22,6 +22,12 @@ const routes: Array<RouteRecordRaw> = [
         path: '/partyFee',
         name: 'PartyFeePayment',
         component: ()=> import('../views/BranchManagement/PartyFeePayment.vue')
+    },
+    {
+        // 三会一课
+        path: '/assembly',
+        name: 'Assembly',
+        component: ()=> import('../views/ThreeMeetLesson/Assembly.vue')
     }
     // {
     //   path: '/about',
