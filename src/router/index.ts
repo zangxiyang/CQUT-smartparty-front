@@ -16,6 +16,12 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
             keepAlive: true
         }
+    },
+    {
+        path: '/assembly',
+        name: 'Assembly',
+        component: () => import('../views/ThreeMeetLesson/Assembly.vue')
+
     }
     // {
     //   path: '/about',
