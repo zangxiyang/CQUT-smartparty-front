@@ -23,7 +23,7 @@
           </el-submenu>
           <el-menu-item index="1-5">书记讲党课</el-menu-item>
           <el-menu-item index="1-6">党组织关系转接</el-menu-item>
-          <el-menu-item index="1-7">党费缴纳</el-menu-item>
+          <el-menu-item index="1-7" route="/partyFee">党费缴纳</el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template #title>三会一课</template>
