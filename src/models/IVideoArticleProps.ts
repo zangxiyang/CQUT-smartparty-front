@@ -1,7 +1,7 @@
 /**
- * 党员大会接口数据类型定义
+ * 视屏卡片接口数据类型定义
  */
-//卡片数据类型
+//视屏卡片数据类型
 export interface ColumnProps{
     id:string
     href:string,

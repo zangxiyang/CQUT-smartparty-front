@@ -28,7 +28,12 @@ const routes: Array<RouteRecordRaw> = [
         path: '/meeting/assembly',
         name: 'Assembly',
         component: ()=> import('../views/ThreeMeetLesson/Assembly.vue')
-    }
+    },{
+        // 学习培训 -> 书记轮训
+        path: '/train/secretary',
+        name: 'SecretaryTrain',
+        component: ()=> import('../views/TrainingAndLearning/SecretaryTrain.vue')
+    },
     // {
     //   path: '/about',
     //   name: 'About',

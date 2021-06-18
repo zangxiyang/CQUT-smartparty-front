@@ -1,5 +1,5 @@
 <template>
-<div class="list_box_item">
+<div class="list_box_item" @click="onSkipImageText(list.id)">
   <div class="cover">
     <el-image  class="image" :src="list.href" :fit="cover" lazy></el-image>
   </div>
@@ -22,15 +22,9 @@
 
 <script lang="ts">
 import {defineComponent, PropType,ref} from "vue";
+import {useRouter} from "vue-router";
+import {ColumnProps} from "@/models/IVideoArticleProps";
 
-export interface ColumnProps{
-  id:string
-  href:string,
-  title:string,
-  narrator:string,
-  tag:string,
-  time:any
-}
 export default defineComponent({
   name: "VideoArticlesItem",
   props:{
@@ -39,10 +33,19 @@ export default defineComponent({
       required:true
     }
   },
-  setup(props){
+  setup(){
+    const router = useRouter()
     const cover = ref('cover');
+    const onSkipImageText =(id:string)=>{
+      // 跳转到图文详情页
+      if(id){
+        router.push(`/meeting/article/${id}`);
+      }
+
+    }
     return {
-      cover
+      cover,
+      onSkipImageText
     }
   }
 })

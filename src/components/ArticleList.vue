@@ -1,9 +1,6 @@
 <template>
   <div class="content">
-    <video-articles-item  v-for="(item,index) in list" :list="item" :key="index"></video-articles-item>
-    <div v-if="list.length%2 > 0">
-      <div class="is_odd" v-for="item in (2-list.length%2)" :key="item"></div>
-    </div>
+    <article-item  v-for="(item,index) in list" :list="item" :key="index"></article-item>
   </div>
   <div class="party-pagination f-jc-c al-c">
     <el-pagination background layout="prev,pager,next" :total="200" class="mt-20"/>
@@ -12,8 +9,8 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
-import VideoArticlesItem from './VideoArticlesItem.vue'
-import {VideoArticleProp} from '@/models/IVideoArticleProps'
+import ArticleItem from './ArticleItem.vue'
+import {ArticlelistProps} from '@/models/IArticleProps'
 
 
 interface PartyBranch {
@@ -23,14 +20,14 @@ interface PartyBranch {
 
 
 export default defineComponent({
-  name: "VideoArticlesList",
+  name: "ArticleList",
   props:{
     list:{
-      type:Object as PropType<VideoArticleProp[]>,
+      type:Object as PropType<ArticlelistProps[]>,
       required:true
     }
   },
-  components: {VideoArticlesItem},
+  components: {ArticleItem},
   setup(){
 
     return {
@@ -90,20 +87,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .content{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:space-around;
-  justify-items: center;
-  text-align: justify;
-}
-.is_odd{
-  content: '';
-  width: 400px;
-  height: 380px;
-  border:1px solid transparent;
-  padding: 5px;
-  overflow: hidden;
-
+  margin: 0 15px;
 }
 
 </style>

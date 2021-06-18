@@ -40,7 +40,7 @@
         </el-submenu>
         <el-submenu index="4">
           <template #title>学习培训</template>
-          <el-menu-item index="4-1">书记轮训</el-menu-item>
+          <el-menu-item index="4-1" :route="{name: 'SecretaryTrain'}">书记轮训</el-menu-item>
           <el-menu-item index="4-2">学习笔记</el-menu-item>
         </el-submenu>
         <el-menu-item index="5">支部发展</el-menu-item>
