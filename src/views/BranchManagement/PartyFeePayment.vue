@@ -1,6 +1,23 @@
 <template>
 <base-content-layout>
-  党费缴纳界面
+  <el-table
+      :data="tableData"
+      style="width: 100%">
+    <el-table-column
+        prop="year"
+        label="年份"
+        width="180">
+    </el-table-column>
+    <el-table-column
+        prop="duePay"
+        label="应缴党费"
+        width="180">
+    </el-table-column>
+    <el-table-column
+        prop="actualPay"
+        label="实缴党费">
+    </el-table-column>
+  </el-table>
 </base-content-layout>
 </template>
 
@@ -19,7 +36,25 @@ export default defineComponent({
   name: "PartyFeePayment",
   components: {BaseContentLayout},
   data() {
-    return {}
+    return {
+      tableData: [{
+        year: '2016-05-02',
+        duePay: '王小虎',
+        actualPay: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        year: '2016-05-04',
+        duePay: '王小虎',
+        actualPay: '上海市普陀区金沙江路 1517 弄'
+      }, {
+        year: '2016-05-01',
+        duePay: '王小虎',
+        actualPay: '上海市普陀区金沙江路 1519 弄'
+      }, {
+        year: '2016-05-03',
+        duePay: '王小虎',
+        actualPay: '上海市普陀区金沙江路 1516 弄'
+      }]
+    }
   }
 })
 </script>

@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
             keepAlive: true,
         }
     }, {
-        path: '/member/:id',
+        path: '/branch/member/:id',
         name: 'MemberDetail',
         component: () => import('../views/BranchManagement/AllMember/MemberDetail.vue'),
         meta: {
@@ -19,13 +19,13 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         // 党费缴纳
-        path: '/partyFee',
+        path: '/branch/partyFee',
         name: 'PartyFeePayment',
         component: ()=> import('../views/BranchManagement/PartyFeePayment.vue')
     },
     {
-        // 三会一课
-        path: '/assembly',
+        // 三会一课 -> 党员大会
+        path: '/meeting/assembly',
         name: 'Assembly',
         component: ()=> import('../views/ThreeMeetLesson/Assembly.vue')
     }
