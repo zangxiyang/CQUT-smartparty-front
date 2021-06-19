@@ -16,6 +16,39 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
             keepAlive: true
         }
+    },{
+        // 工作计划
+        path: '/branch/plan/',
+        name: 'WorkPlan',
+        component: () => import('../views/BranchManagement/WorkPlan.vue'),
+        meta: {
+            keepAlive: true
+        }
+    },{
+        // 工作总结
+        path: '/branch/summary/',
+        name: 'WorkSummary',
+        component: () => import('../views/BranchManagement/WorkSummary.vue'),
+        meta: {
+            keepAlive: true
+        }
+    },
+    {
+        // 书记述职报告
+        path: '/branch/report',
+        name: 'SecretaryReport',
+        component: () => import('../views/BranchManagement/report/SecretaryReport.vue'),
+        meta: {
+            keepAlive: true
+        }
+    },{
+        // 书记讲党课
+        path: '/branch/lesson',
+        name: 'SecretaryLesson',
+        component: () => import('../views/BranchManagement/SecretaryLesson.vue'),
+        meta: {
+            keepAlive: true
+        }
     },
     {
         // 党费缴纳
