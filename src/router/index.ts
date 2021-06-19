@@ -33,6 +33,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/activity/democratic',
         name: 'DemocraticAppraisal',
         component: ()=> import('../views/Activity/DemocraticAppraisal.vue')
+    },{
+        // 党日活动 -> 志愿活动
+        path: '/activity/volunteer',
+        name: 'VolunteerActivity',
+        component: ()=> import('../views/Activity/VolunteerActivity.vue')
     },
     {
         // 三会一课 -> 党员大会

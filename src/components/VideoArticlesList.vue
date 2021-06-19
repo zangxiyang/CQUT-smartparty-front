@@ -15,7 +15,6 @@
 import {defineComponent, PropType} from 'vue';
 import VideoArticlesItem from './VideoArticlesItem.vue'
 import {ColumnProps} from "@/components/VideoArticlesItem.vue";
-import VideoArticleItem from "@/components/VideoArticleItem.vue";
 
 
 interface PartyBranch {
