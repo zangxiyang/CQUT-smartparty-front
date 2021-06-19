@@ -60,7 +60,11 @@
           <el-menu-item index="7-2">入党流程</el-menu-item>
           <el-menu-item index="7-3">年度发展党员</el-menu-item>
         </el-submenu>
-        <el-menu-item index="8">支部大数据</el-menu-item>
+        <a :href="bigDataUrl" class="el-menu-item"
+           style="border-bottom-color: transparent; color: rgb(255, 255, 255);"
+            :style="navLastItemActive"
+            @mouseenter="toDataScreen(0)" @mouseleave="toDataScreen(1)">
+          支部大数据</a>
         <div class="menu-bg"></div>
       </el-menu>
     </div>
@@ -69,7 +73,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from "vue"
+import {defineComponent, ref, reactive} from "vue"
 import {clearPending} from "@/utils/https";
 // import {useRouter} from "vue-router"
 
@@ -77,32 +81,49 @@ export default defineComponent({
   setup() {
     const activeIndex = ref('1-1')
 
+
+    // 菜单选择处理器
     const handleSelect = (key: string, keyPath: string) => {
       console.log(key, keyPath)
-      if (key === "8"){
-        // 当前点击了支部大数据nav
-        clearPending();
-        // 更新index的值
-        window.location.href = process.env.VUE_APP_BIGDATA
-      }
       // router.push(key)
     }
+    const navLastItemActive = ref({});
+    // 处理支部大数据最后一项
+    const toDataScreen = (flag: number)=>{
+      if (flag === 1){
+        // 当前为移出状态
+        navLastItemActive.value = {
+          backgroundColor: 'rgb(165, 18, 17)'
+        }
+      }else if (flag === 0){
+        // 当前出鼠标进入
+        navLastItemActive.value = {
+          backgroundColor: 'rgb(132,14,14)'
+        }
+      }
+    }
+
     return {
       activeIndex,
-      handleSelect
+      handleSelect,
+      toDataScreen,
+      navLastItemActive,
+      bigDataUrl: process.env.VUE_APP_BIGDATA
     }
   }
 })
 </script>
 
 <style lang="scss" scoped>
-nav{
-  background:rgb(165, 18, 17);
-  ::v-deep{
-    .el-menu.el-menu--horizontal{
+nav {
+  background: rgb(165, 18, 17);
+
+  ::v-deep {
+    .el-menu.el-menu--horizontal {
       border-bottom: none;
     }
-    .el-submenu .el-submenu__title i{
+
+    .el-submenu .el-submenu__title i {
       color: #fff;
     }
 
@@ -110,7 +131,7 @@ nav{
 }
 </style>
 <style>
-.el-popper .el-submenu .el-submenu__title i{
+.el-popper .el-submenu .el-submenu__title i {
   color: #fff;
 }
 </style>
