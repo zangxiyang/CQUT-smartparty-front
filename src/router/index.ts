@@ -66,10 +66,19 @@ const routes: Array<RouteRecordRaw> = [
         },
     },
     {
-        // 学习培训->学习笔记
+        // 政治生日->党员政治生日
         path: '/life/member',
         name: 'MemberLife',
         component: ()=> import('../views/PoliticalLife/MemberBirthday.vue'),
+        meta:{
+            keepAlive: true
+        }
+    },
+    {
+        // 政治生日->政治生日感言
+        path: '/life/recollection',
+        name: 'Recollection',
+        component: ()=> import('../views/PoliticalLife/Recollections.vue'),
         meta:{
             keepAlive: true
         }
