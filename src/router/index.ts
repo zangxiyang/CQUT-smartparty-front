@@ -51,6 +51,14 @@ const routes: Array<RouteRecordRaw> = [
         meta:{
             keepAlive: true
         }
+    },{
+        // 学习培训->学习笔记
+        path: '/train/note',
+        name: 'StudyNote',
+        component: ()=> import('../views/TrainingAndLearning/StudyNote.vue'),
+        meta:{
+            keepAlive: true
+        }
     }
     // {
     //   path: '/about',

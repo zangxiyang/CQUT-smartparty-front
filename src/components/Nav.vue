@@ -41,9 +41,13 @@
         <el-submenu index="4">
           <template #title>学习培训</template>
           <el-menu-item index="4-1" :route="{name: 'SecretaryTrain'}">书记轮训</el-menu-item>
-          <el-menu-item index="4-2">学习笔记</el-menu-item>
+          <el-menu-item index="4-2" :route="{name: 'StudyNote'}">学习笔记</el-menu-item>
         </el-submenu>
-        <el-menu-item index="5">支部发展</el-menu-item>
+        <el-submenu index="5">
+          <template #title>支部发展</template>
+          <el-menu-item index="5-1">发展历程</el-menu-item>
+
+        </el-submenu>
         <el-submenu index="6">
           <template #title>政治生日</template>
           <el-menu-item index="6-1">政治生日活动场景</el-menu-item>
@@ -72,13 +76,14 @@ import {clearPending} from "@/utils/https";
 export default defineComponent({
   setup() {
     const activeIndex = ref('1-1')
-    // const router = useRouter()
+
     const handleSelect = (key: string, keyPath: string) => {
       console.log(key, keyPath)
       if (key === "8"){
         // 当前点击了支部大数据nav
         clearPending();
-        window.location = process.env.VUE_APP_BIGDATA
+        // 更新index的值
+        window.location.href = process.env.VUE_APP_BIGDATA
       }
       // router.push(key)
     }
