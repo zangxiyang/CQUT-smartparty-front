@@ -63,6 +63,15 @@ const routes: Array<RouteRecordRaw> = [
         component: ()=> import('../views/TrainingAndLearning/StudyNote.vue'),
         meta:{
             keepAlive: true
+        },
+    },
+    {
+        // 学习培训->学习笔记
+        path: '/life/member',
+        name: 'MemberLife',
+        component: ()=> import('../views/PoliticalLife/MemberBirthday.vue'),
+        meta:{
+            keepAlive: true
         }
     }
     // {

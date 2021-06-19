@@ -1,8 +1,16 @@
 <template>
 <div class="party-member-list">
   <el-row :gutter="20" type="flex">
-    <el-col :span="4" v-for="item in testList" :key="item.id">
-      <member-card :id="item.id" :img="item?.img" :name="item.name" @click="onCardClick(item.id)"/>
+    <el-col :span="4" v-for="item in lists" :key="item.id">
+      <template v-if="item.year == null">
+        <member-card :id="item.id" :img="item?.img" :name="item.name" @click="onCardClick(item.id)"/>
+      </template>
+      <template v-else>
+        <member-card :id="item.id" :img="item?.img"
+                     :party-year="item.year"
+                     :desc="item.info"
+                     :name="item.name" @click="onCardClick(item.id)" big/>
+      </template>
     </el-col>
   </el-row>
   <div class="party-pagination f-jc-c al-c">
@@ -21,41 +29,29 @@
 */
 import {defineComponent, PropType, reactive, ref,toRefs} from 'vue';
 import {useRouter} from "vue-router";
-import {MemberList} from "@/utils/Interfaces";
+import {IMemberList} from "@/utils/Interfaces";
 import MemberCard from "@/components/MemberCard.vue";
 
 export default defineComponent({
   name: "MemberList",
   components: {MemberCard},
+  emits: ['click'],
   props:{
     lists: {
-      type: Array as PropType<MemberList[]>
+      type: Array as PropType<IMemberList[]>
     }
   },
-  setup(){
-    // 测试数据
-    const testList = [];
-    const router = useRouter();
-    for (let i = 0 ; i < 20; i ++){
-      let tmp = {
-        name: `测试姓名${i}`,
-        id: `${i}`,
-      } as MemberList
-      if (i % 2 === 0) tmp["img"] = "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg";
-      testList.push(tmp);
-    }
-    const testListRef = reactive({
-      testList: testList
-    })
+  setup(props,{ emit }){
 
     // 卡片点击跳转事件
     const onCardClick = (id: string)=>{
+      emit('click',id); // 点击事件
       // 跳转到党员详情页面
-      router.push(`/branch/member/${id}`);
+      // router.push(`/branch/member/${id}`);
     }
 
     return {
-      ...toRefs(testListRef),
+      // ...toRefs(testListRef),
       onCardClick
     }
   }

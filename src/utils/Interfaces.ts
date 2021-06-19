@@ -11,10 +11,12 @@ interface PartyBranch{
     value: string   // 向后端请求的值
 }
 
-interface MemberList {
+interface IMemberList {
     name: string,   // 姓名
     img: string,    // 照片url
     id: string      // 当前党员的id，以便于查看党员的详细信息
+    year: string,   // 党龄
+    info: string,   // 于...入党 入党时间
 }
 interface BreadNav {
     name: string;
@@ -24,5 +26,5 @@ interface BreadNav {
 }
 
 export {
-    PartyBranch, MemberList,BreadNav
+    PartyBranch, IMemberList,BreadNav
 }

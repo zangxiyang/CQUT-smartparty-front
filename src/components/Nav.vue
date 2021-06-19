@@ -52,7 +52,7 @@
           <template #title>政治生日</template>
           <el-menu-item index="6-1">政治生日活动场景</el-menu-item>
           <el-menu-item index="6-2">政治生日感言</el-menu-item>
-          <el-menu-item index="6-3">党员政治生日</el-menu-item>
+          <el-menu-item index="6-3" :route="{name: 'MemberLife'}">党员政治生日</el-menu-item>
         </el-submenu>
         <el-submenu index="7">
           <template #title>党员发展</template>
