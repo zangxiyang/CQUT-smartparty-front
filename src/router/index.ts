@@ -71,6 +71,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/BranchManagement/PartyRelation.vue')
     },
     {
+        // 党日活动 -> 主题党日
+        path: '/activity/day',
+        name: 'PartyDay',
+        component: () => import('../views/Activity/PartyDay.vue')
+    },
+    {
         // 党日活动 -> 民主评议
         path: '/activity/democratic',
         name: 'DemocraticAppraisal',
@@ -119,6 +125,15 @@ const routes: Array<RouteRecordRaw> = [
         },
     },
     {
+        // 政治生日->政治生日活动场景
+        path: '/life/scene',
+        name: 'ActivityScene',
+        component: () => import('../views/PoliticalLife/ActivityScene.vue'),
+        meta: {
+            keepAlive: true
+        }
+    },
+    {
         // 政治生日->党员政治生日
         path: '/life/member',
         name: 'MemberLife',
@@ -135,15 +150,15 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
             keepAlive: true
         }
+    },{
+        // 党员发展->年度发展党员
+        path: '/expand/year',
+        name: 'ExpandPartyMember',
+        component: () => import('../views/Expand/ExpandMember.vue'),
+        meta: {
+            keepAlive: true
+        }
     }
-    // {
-    //   path: '/about',
-    //   name: 'About',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    // }
 ]
 
 const router = createRouter({

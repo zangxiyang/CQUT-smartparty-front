@@ -30,7 +30,7 @@ export default defineComponent({
       default: () => '筛选条件'
     },
     items: Array as PropType<PartyBranch[]>,
-    modelValue: String
+    modelValue: String,
   },
   setup(props, {emit}) {
     const active = ref(computed({

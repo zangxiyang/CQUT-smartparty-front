@@ -33,7 +33,7 @@
         </el-submenu>
         <el-submenu index="3">
           <template #title>党日活动</template>
-          <el-menu-item index="3-1">主题党日</el-menu-item>
+          <el-menu-item index="3-1" :route="{name: 'PartyDay'}">主题党日</el-menu-item>
           <el-menu-item index="3-2" :route="{name: 'DemocraticAppraisal'}">民主评议</el-menu-item>
           <el-menu-item index="3-3" :route="{name: 'VolunteerActivity'}">志愿活动</el-menu-item>
           <el-menu-item index="3-4">重温入党誓词</el-menu-item>
@@ -50,7 +50,7 @@
         </el-submenu>
         <el-submenu index="6">
           <template #title>政治生日</template>
-          <el-menu-item index="6-1">政治生日活动场景</el-menu-item>
+          <el-menu-item index="6-1" :route="{name: 'ActivityScene'}">政治生日活动场景</el-menu-item>
           <el-menu-item index="6-2" :route="{name: 'Recollection'}">政治生日感言</el-menu-item>
           <el-menu-item index="6-3" :route="{name: 'MemberLife'}">党员政治生日</el-menu-item>
         </el-submenu>
@@ -58,7 +58,7 @@
           <template #title>党员发展</template>
           <el-menu-item index="7-1">入党誓言</el-menu-item>
           <el-menu-item index="7-2">入党流程</el-menu-item>
-          <el-menu-item index="7-3">年度发展党员</el-menu-item>
+          <el-menu-item index="7-3" :route="{name: 'ExpandPartyMember'}">年度发展党员</el-menu-item>
         </el-submenu>
         <a :href="bigDataUrl" class="el-menu-item"
            style="border-bottom-color: transparent; color: rgb(255, 255, 255);"
