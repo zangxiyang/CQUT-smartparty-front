@@ -1,7 +1,7 @@
 <template>
   <div class="party-button">
     <el-button @click="click">
-      <a :href="href" v-if="isHref">
+      <!--<a :href="href" v-if="isHref">
         <svg t="1623814418072" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
              p-id="3993" width="200" height="200">
           <path
@@ -9,8 +9,8 @@
               p-id="3994"></path>
         </svg>
         <span style="margin-left: 5px">{{ text }}</span>
-      </a>
-      <div class="flex al-c" v-else>
+      </a>-->
+      <div class="flex al-c">
         <svg t="1623814418072" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
              p-id="3993" width="200" height="200">
           <path
@@ -44,23 +44,13 @@ export default defineComponent({
     },
     // 按钮跳转到的内容
     href: {
-      type: String,
-      default: 'JavaScript:',
-      required: false
+      type: String
     }
   },
-  setup(props) {
-    const isHref = ref<boolean>(false); // 当前是否为跳转按钮
-    function click(): void {
-      if (!props.href) {
-        // 如果当前跳转地址不为空 则进行跳转
-        isHref.value = true;
-      } else {
-        // 则响应当前点击事件
-        isHref.value = false;
-        this.$emit('click');
-      }
-
+  setup(props,{emit}) {
+    const isHref = props.href == null; // 当前是否为跳转按钮
+    const click = ()=>{
+      emit('click');
     }
 
     return {

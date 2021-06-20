@@ -163,6 +163,14 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
             keepAlive: true
         }
+    },{
+        // 党员发展->入党流程
+        path: '/expand/process',
+        name: 'JoinProcess',
+        component: () => import('../views/Expand/JoinProcess.vue'),
+        meta: {
+            keepAlive: true
+        }
     }
 ]
 
