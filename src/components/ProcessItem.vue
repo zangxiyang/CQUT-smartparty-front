@@ -1,11 +1,11 @@
 <template>
   <el-row type="flex" :gutter="20" :class="[first? '':'mt-10']">
-    <el-col :span="2">
+    <el-col :span="3">
       <div class="col">
         <maxer-badge :right="10" :title="title" color="danger"/>
       </div>
     </el-col>
-    <el-col :span="22">
+    <el-col :span="21">
       <slot></slot>
     </el-col>
   </el-row>
