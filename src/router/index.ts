@@ -51,6 +51,15 @@ const routes: Array<RouteRecordRaw> = [
         }
     },
     {
+        // 年度等级考核
+        path: '/branch/level',
+        name: 'AssessmentLevel',
+        component: () => import('../views/BranchManagement/report/AssessmentLevel.vue'),
+        meta: {
+            keepAlive: true
+        }
+    },
+    {
         // 党费缴纳
         path: '/branch/partyFee',
         name: 'PartyFeePayment',

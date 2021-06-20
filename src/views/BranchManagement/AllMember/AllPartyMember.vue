@@ -47,7 +47,6 @@ export default defineComponent({
     }
     list = ref(list);
     const click = (id: string)=>{
-      alert(id);
       router.push(`/branch/member/${id}`);
     }
 

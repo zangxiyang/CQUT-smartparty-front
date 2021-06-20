@@ -19,7 +19,7 @@
           <el-submenu index="1-4">
             <template #title>书记述职</template>
             <el-menu-item index="1-4-1" :route="{name: 'SecretaryReport'}">述职报告</el-menu-item>
-            <el-menu-item index="1-4-2">支部年度考核等级</el-menu-item>
+            <el-menu-item index="1-4-2" :route="{name: 'AssessmentLevel'}">支部年度考核等级</el-menu-item>
           </el-submenu>
           <el-menu-item index="1-5" :route="{name: 'SecretaryLesson'}">书记讲党课</el-menu-item>
           <el-menu-item index="1-6" :route="{name: 'partyRelation'}">党组织关系转接</el-menu-item>
