@@ -35,7 +35,7 @@
       预备期满,本人向党支部提出书面转正申请
     </process-item>
   </process-group>
-  <process-group title="支部大会讨论" name="4">
+  <process-group title="支部大会讨论" name="5">
     <process-item title="准备" first>
       党小组提出意见;党支部征求党员和群众的意见;支部委员会审查
     </process-item>
@@ -46,7 +46,7 @@
       认真履行党员义务、具备党员条件的，应当按期转为正式党员;需要继续考察和教育的，可以延长一次预备期,延长时间不能少于半年,最长不超过一年;不履行党员义务、不具备党员条件的，应当取消其预备党员资格
     </process-item>
   </process-group>
-  <process-group title="上级党委审批" name="5">
+  <process-group title="上级党委审批" name="6">
     <process-item title="时间" first>
       党支部上报的预备党员转正的决议，应当在三个月内审批
     </process-item>
@@ -57,7 +57,7 @@
       党龄从预备期满转为正式党员之日算起
     </process-item>
   </process-group>
-  <process-group title="材料存档" name="6">
+  <process-group title="材料存档" name="7">
     <process-item title="内容" first>
       预备党员转正后，党支部应当及时将其《中国共产党入党志愿书》、入党申请书、政治审查材料、转正申请书和培养教育考察材料，交党委存入本人人事档案
     </process-item>
