@@ -1,5 +1,5 @@
 <template>
-<el-collapse :model-value="['1','2','3','4','5','6']">
+<el-collapse :model-value="['1','2','3','4','5','6','7']">
   <process-group title="编入党支部和党小组" name="1">
     <process-item title="要求" first>
       党组织应当及时将上级党委批准的预备党员编入党支部和党小组，对预备党员继续进行教育和考察。
