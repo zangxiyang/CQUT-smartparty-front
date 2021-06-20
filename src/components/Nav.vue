@@ -36,7 +36,7 @@
           <el-menu-item index="3-1" :route="{name: 'PartyDay'}">主题党日</el-menu-item>
           <el-menu-item index="3-2" :route="{name: 'DemocraticAppraisal'}">民主评议</el-menu-item>
           <el-menu-item index="3-3" :route="{name: 'VolunteerActivity'}">志愿活动</el-menu-item>
-          <el-menu-item index="3-4">重温入党誓词</el-menu-item>
+          <el-menu-item index="3-4" :route="{name: 'ReviewParty'}">重温入党誓词</el-menu-item>
         </el-submenu>
         <el-submenu index="4">
           <template #title>学习培训</template>

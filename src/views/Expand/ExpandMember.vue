@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="content">
-      <member-list :lists="list"/>
+      <member-list :lists="list" @click="click"/>
     </div>
   </select-container-layout>
 </template>
@@ -67,7 +67,6 @@ export default defineComponent({
       list.push(tmp);
     }
     const click = (id: string)=>{
-      alert(id);
       router.push(`/branch/member/${id}`);
     }
 

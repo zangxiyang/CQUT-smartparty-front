@@ -86,6 +86,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/activity/volunteer',
         name: 'VolunteerActivity',
         component: () => import('../views/Activity/VolunteerActivity.vue')
+    },{
+        // 党日活动 -> 重温入党誓词
+        path: '/activity/review',
+        name: 'ReviewParty',
+        component: () => import('../views/Activity/ReviewParty.vue')
     },
     {
         // 三会一课 -> 党员大会
