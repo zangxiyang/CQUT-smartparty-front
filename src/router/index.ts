@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
             keepAlive: true
         }
-    },{
+    }, {
         // 工作计划
         path: '/branch/plan/',
         name: 'WorkPlan',
@@ -24,7 +24,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
             keepAlive: true
         }
-    },{
+    }, {
         // 工作总结
         path: '/branch/summary/',
         name: 'WorkSummary',
@@ -41,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
             keepAlive: true
         }
-    },{
+    }, {
         // 书记讲党课
         path: '/branch/lesson',
         name: 'SecretaryLesson',
@@ -63,47 +63,52 @@ const routes: Array<RouteRecordRaw> = [
         // 党费缴纳
         path: '/branch/partyFee',
         name: 'PartyFeePayment',
-        component: ()=> import('../views/BranchManagement/PartyFeePayment.vue')
-    },{
+        component: () => import('../views/BranchManagement/PartyFeePayment.vue')
+    }, {
         // 党组织关系转接
         path: '/branch/partyRelation',
         name: 'partyRelation',
-        component: ()=> import('../views/BranchManagement/PartyRelation.vue')
+        component: () => import('../views/BranchManagement/PartyRelation.vue')
     },
     {
         // 党日活动 -> 民主评议
         path: '/activity/democratic',
         name: 'DemocraticAppraisal',
-        component: ()=> import('../views/Activity/DemocraticAppraisal.vue')
-    },{
+        component: () => import('../views/Activity/DemocraticAppraisal.vue')
+    }, {
         // 党日活动 -> 志愿活动
         path: '/activity/volunteer',
         name: 'VolunteerActivity',
-        component: ()=> import('../views/Activity/VolunteerActivity.vue')
+        component: () => import('../views/Activity/VolunteerActivity.vue')
     },
     {
         // 三会一课 -> 党员大会
         path: '/meeting/assembly',
         name: 'Assembly',
-        component: ()=> import('../views/ThreeMeetLesson/Assembly.vue'),
-        meta:{
+        component: () => import('../views/ThreeMeetLesson/Assembly.vue'),
+        meta: {
             keepAlive: true
         }
+    }, {
+        // 三会一课 -> 党员大会
+        path: '/meeting/branchMeeting',
+        name: 'BranchMeeting',
+        component: () => import('../views/ThreeMeetLesson/BranchMeeting.vue'),
     },
     {
         // 学习培训->书记轮训
         path: '/train/assembly',
         name: 'SecretaryTrain',
-        component: ()=> import('../views/TrainingAndLearning/SecretaryTrain.vue'),
-        meta:{
+        component: () => import('../views/TrainingAndLearning/SecretaryTrain.vue'),
+        meta: {
             keepAlive: true
         }
-    },{
+    }, {
         // 学习培训->学习笔记
         path: '/train/note',
         name: 'StudyNote',
-        component: ()=> import('../views/TrainingAndLearning/StudyNote.vue'),
-        meta:{
+        component: () => import('../views/TrainingAndLearning/StudyNote.vue'),
+        meta: {
             keepAlive: true
         },
     },
@@ -111,8 +116,8 @@ const routes: Array<RouteRecordRaw> = [
         // 政治生日->党员政治生日
         path: '/life/member',
         name: 'MemberLife',
-        component: ()=> import('../views/PoliticalLife/MemberBirthday.vue'),
-        meta:{
+        component: () => import('../views/PoliticalLife/MemberBirthday.vue'),
+        meta: {
             keepAlive: true
         }
     },
@@ -120,8 +125,8 @@ const routes: Array<RouteRecordRaw> = [
         // 政治生日->政治生日感言
         path: '/life/recollection',
         name: 'Recollection',
-        component: ()=> import('../views/PoliticalLife/Recollections.vue'),
-        meta:{
+        component: () => import('../views/PoliticalLife/Recollections.vue'),
+        meta: {
             keepAlive: true
         }
     }

@@ -28,7 +28,7 @@
         <el-submenu index="2">
           <template #title>三会一课</template>
           <el-menu-item index="2-1" :route="{name: 'Assembly'}">党员大会</el-menu-item>
-          <el-menu-item index="2-2">党支部委员会会议</el-menu-item>
+          <el-menu-item index="2-2" :route="{name: 'BranchMeeting'}">党支部委员会会议</el-menu-item>
           <el-menu-item index="2-3">党课</el-menu-item>
         </el-submenu>
         <el-submenu index="3">
