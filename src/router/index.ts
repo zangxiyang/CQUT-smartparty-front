@@ -90,10 +90,16 @@ const routes: Array<RouteRecordRaw> = [
             keepAlive: true
         }
     }, {
-        // 三会一课 -> 党员大会
+        // 三会一课 -> 党支部委员会会议
         path: '/meeting/branchMeeting',
         name: 'BranchMeeting',
         component: () => import('../views/ThreeMeetLesson/BranchMeeting.vue'),
+    },
+    {
+        // 三会一课 -> 党课
+        path: '/meeting/party',
+        name: 'PartyLesson',
+        component: () => import('../views/ThreeMeetLesson/PartyLesson.vue'),
     },
     {
         // 学习培训->书记轮训
