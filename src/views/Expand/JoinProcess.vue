@@ -17,6 +17,9 @@
           <!--入党积极分子的确定和培养教育-->
           <activists/>
         </template>
+        <template v-else-if="active === 3">
+          <expand-object/>
+        </template>
       </div>
       <div class="operation-container">
         <div class="f-jc-c al-c" style="width: 100%">
@@ -42,10 +45,11 @@ import CardView from "@/components/CardView.vue";
 import Button4Party from "@/components/Button4Party.vue";
 import Apply from "@/components/JoinProcessPart/Apply.vue";
 import Activists from "@/components/JoinProcessPart/Activists.vue";
+import ExpandObject from "@/components/JoinProcessPart/ExpandObject.vue";
 
 export default defineComponent({
   name: "JoinProcess",
-  components: {Activists, Apply, Button4Party, CardView, BaseContentLayout},
+  components: {ExpandObject, Activists, Apply, Button4Party, CardView, BaseContentLayout},
   setup(){
     const active = ref(1);
     const buttonText = ref('已知晓，下一步');
@@ -87,7 +91,7 @@ export default defineComponent({
   position: absolute;
   padding: 0 10px;
   width: 100%;
-  bottom: 5%;
+  bottom: 25px;
   left: 0;
 }
 .col{
