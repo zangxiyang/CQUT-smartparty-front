@@ -45,7 +45,7 @@
         </el-submenu>
         <el-submenu index="5">
           <template #title>支部发展</template>
-          <el-menu-item index="5-1">发展历程</el-menu-item>
+          <el-menu-item index="5-1" :route="{name: 'History'}">发展历程</el-menu-item>
 
         </el-submenu>
         <el-submenu index="6">

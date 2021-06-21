@@ -176,6 +176,12 @@ const routes: Array<RouteRecordRaw> = [
         path: '/article',
         name: 'Article',
         component: () => import('../views/Base/Article.vue'),
+    },
+    {
+        // 支部发展 -> 发展历程
+        path: '/development/history',
+        name: 'History',
+        component: () => import('../views/BranchDevelopment/History.vue'),
     }
 ]
 
