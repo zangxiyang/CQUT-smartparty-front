@@ -22,7 +22,7 @@
     </div>
 
     <!--不同样式-->
-
+    <!--偶数项-->
     <div class="time-line-item">
       <div class="content flex">
         <div class="img" style="order: 3;">
@@ -51,7 +51,7 @@
  * 版本: V1
 */
 import {defineComponent} from 'vue';
-
+// todo 封装为组件
 export default defineComponent({
   name: "TimeLine",
   setup(prop) {
