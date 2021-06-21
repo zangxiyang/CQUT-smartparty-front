@@ -1,42 +1,42 @@
 <template>
   <div class="party-time-line-container">
-    <div class="now-day f-jc-c al-c">
+    <div class="now-day f-jc-c al-c none-select">
       <div class="today">
         今天
       </div>
     </div>
-    <div class="time-line-item">
-      <div class="content flex">
-        <div class="img">
-          <img src="https://www.sf-express.com/cn/sc/download/SF-CN-DH-1.jpg" alt="" style="width: 100%">
-        </div>
-        <div class="arrow">
-          <img/>
-        </div>
-        <div class="desc">
-          <h3 class="date-time">2020-06-09</h3>
-          <h3 class="title">标题内容标题内容</h3>
-          <div class="content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>
-        </div>
-      </div>
-    </div>
 
-    <!--不同样式-->
-    <!--偶数项-->
-    <div class="time-line-item">
-      <div class="content flex">
-        <div class="img" style="order: 3;">
-          <img src="https://www.sf-express.com/cn/sc/download/SF-CN-DH-3.jpg" alt="" style="width: 100%">
+    <div class="time-line-item" v-for="(item,index) in list" :key="item.title">
+      <template v-if="index % 2 !== 0">
+        <div class="content flex">
+          <div class="img">
+            <el-image :src="item.imgUrl" fit="cover" lazy style="width: 100%" :preview-src-list="[item.imgUrl]"/>
+          </div>
+          <div class="arrow">
+            <img/>
+          </div>
+          <div class="desc">
+            <h3 class="date-time">{{ item.date }}</h3>
+            <h3 class="title">{{ item.title }}</h3>
+            <div class="content">{{ item.desc }}</div>
+          </div>
         </div>
-        <div class="arrow" style="order: 2;width: 47px;margin-left: 33px">
-          <img class="arrow2"/>
+      </template>
+      <template v-else>
+        <div class="content flex">
+          <div class="img" style="order: 3;">
+            <el-image :src="item.imgUrl" fit="cover" lazy style="width: 100%" :preview-src-list="[item.imgUrl]"/>
+          </div>
+          <div class="arrow" style="order: 2;width: 47px;margin-left: 33px">
+            <img class="arrow2"/>
+          </div>
+          <div class="desc" style="order: 1">
+            <h3 class="date-time">{{ item.date }}</h3>
+            <h3 class="title">{{ item.title }}</h3>
+            <div class="content">{{ item.desc }}</div>
+          </div>
         </div>
-        <div class="desc" style="order: 1">
-          <h3 class="date-time">2020-06-09</h3>
-          <h3 class="title">标题内容标题内容</h3>
-          <div class="content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>
-        </div>
-      </div>
+      </template>
     </div>
 
   </div>
@@ -50,10 +50,14 @@
  * 时间: 2021/6/21
  * 版本: V1
 */
-import {defineComponent} from 'vue';
+import {defineComponent,PropType} from 'vue';
+import {ITimeLineProps} from "@/models/ITimeLineProps";
 // todo 封装为组件
 export default defineComponent({
   name: "TimeLine",
+  props:{
+    list: Array as PropType<ITimeLineProps[]>
+  },
   setup(prop) {
     return {}
   },
@@ -106,6 +110,7 @@ export default defineComponent({
             width: 100%;
             overflow: hidden;
             font-size: 14px;
+            letter-spacing: 1.5px;
           }
         }
         .arrow{
