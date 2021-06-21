@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <article-item  v-for="(item,index) in list" :list="item" :key="index"></article-item>
+    <article-item  v-for="(item,index) in list" :list="item" :key="index" @click="onArticleItemClick(item.id)"></article-item>
   </div>
   <div class="party-pagination f-jc-c al-c">
     <el-pagination background layout="prev,pager,next" :total="200" class="mt-20"/>
@@ -21,6 +21,7 @@ interface PartyBranch {
 
 export default defineComponent({
   name: "ArticleList",
+  emits: ['click'],
   props:{
     list:{
       type:Object as PropType<ArticlelistProps[]>,
@@ -28,9 +29,12 @@ export default defineComponent({
     }
   },
   components: {ArticleItem},
-  setup(){
-
+  setup(props, { emit }){
+    const onArticleItemClick = (id: string)=>{
+      emit('click')
+    }
     return {
+      onArticleItemClick
     }
   },
   data() {

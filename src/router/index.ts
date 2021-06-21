@@ -171,6 +171,11 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
             keepAlive: true
         }
+    },{
+        // 基本组件->文章详情
+        path: '/article',
+        name: 'Article',
+        component: () => import('../views/Base/Article.vue'),
     }
 ]
 

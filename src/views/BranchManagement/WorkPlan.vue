@@ -1,6 +1,6 @@
 <template>
 <select-container-layout title="党支部" v-model="active">
-  <article-list :list="listArr"/>
+  <article-list :list="listArr" @click="click"/>
 </select-container-layout>
 </template>
 
@@ -15,12 +15,14 @@
 import {defineComponent, ref} from 'vue';
 import SelectContainerLayout from "@/layout/SelectContainerLayout.vue";
 import ArticleList from "@/components/ArticleList.vue";
+import {useRouter} from "vue-router";
 
 export default defineComponent({
   name: "WorkPlan",
   components: {ArticleList, SelectContainerLayout},
   setup(){
     const active = ref('0');
+    const router = useRouter();
     const listArr =[{
       id:'1',
       href:'https://z3.ax1x.com/2021/06/17/2zmvy6.jpg',
@@ -41,9 +43,15 @@ export default defineComponent({
       time: '2021年5月14日/15日 19:30'
     }]
 
+    const click = (id: string)=>{
+      console.log(id);
+      router.push('/article');
+    }
+
     return {
       active,
-      listArr: ref(listArr)
+      listArr: ref(listArr),
+      click
     }
   },
 })
