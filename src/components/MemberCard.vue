@@ -36,9 +36,9 @@ import {defineComponent} from 'vue';
 export default defineComponent({
   name: "MemberCard",
   props:{
-    name: String,
+    name: [String,Number],
     img: String,
-    id: String,
+    id: [String,Number],
     partyYear: String,  // 党龄
     desc: String,       // 其他介绍
     big: {

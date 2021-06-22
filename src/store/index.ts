@@ -16,6 +16,7 @@ export default createStore({
         text: '首页'
       }
     ]as BreadNav[], // 面包屑导航
+    vuexBranches: []
     // todo 提出
     // 缓存列表
     /*vuexCacheView:[

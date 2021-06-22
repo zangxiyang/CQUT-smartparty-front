@@ -11,6 +11,9 @@ import './assets/scss/maxer.core.scss'
 
 import installElementPlus from './plugins/element'
 import {ElMessage, ElNotification} from "element-plus";
+import installPreload from '@/utils/PreLoadUtil';
+// 引入接口Api
+import '@/api/index'
 
 // 声明全局组件
 declare module '@vue/runtime-core' {
@@ -23,15 +26,16 @@ declare module '@vue/runtime-core' {
 
 
 //引用mock数据测试
-if (process.env.NODE_ENV === 'development') {
+/*if (process.env.NODE_ENV === 'development') {
     console.log("mock测试")
     require('./mock')
 }else {
     console.log(process.env.VUE_APP_BASE_API)
     console.log("真实api")
-}
+}*/
 const app = createApp(App)
 installElementPlus(app)
 installMaxerStore(app) // 全局混入vuex
 initStorePersistence(store) // 初始化持久化vuex
+installPreload();           // 首屏预加载
 app.use(store).use(router).mount('#app')

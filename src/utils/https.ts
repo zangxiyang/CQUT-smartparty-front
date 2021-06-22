@@ -68,7 +68,29 @@ const service = axios.create({
         return data
     }]
 
-})
+});
+
+// 请求方式
+export class Methods {
+    public static GET = 'get'
+    public static POST = 'post'
+    public static DELETE = 'delete'
+    public static PUT = 'put'
+}
+
+// 封装axios请求
+export async function request<T>(url: string, method: string, params?: object): Promise<AxiosResponse<T>>{
+ switch (method.toLowerCase()){
+     case Methods.GET:
+         // 当前是get请求
+         return service.get(url,{params});
+     case Methods.POST:
+         // 当前是post请求
+         return axios.post(url,params);
+     default:
+         return axios.get(url,{params});
+ }
+}
 
 
 // 声明一个 Map 用于存储每个请求的标识 和 取消函数
@@ -101,6 +123,7 @@ const removePending = (config: AxiosRequestConfig) => {
         qs.stringify(config.params),
         qs.stringify(config.data)
     ].join('&')
+
     if (pending.has(url)) { // 如果在 pending 中存在当前请求标识，需要取消当前请求，并且移除
         const cancel = pending.get(url)
         cancel(url)
@@ -120,8 +143,8 @@ export const clearPending = () => {
 
 // 请求拦截器
 service.interceptors.request.use((config: AxiosRequestConfig) => {
-    removePending(config) // 在请求开始前，对之前的请求做检查取消操作
-    addPending(config) // 将当前请求添加到 pending 中
+    // removePending(config) // 在请求开始前，对之前的请求做检查取消操作
+    // addPending(config) // 将当前请求添加到 pending 中
     return config
 }, (error) => {
     // 错误抛到业务代码
@@ -133,9 +156,8 @@ service.interceptors.request.use((config: AxiosRequestConfig) => {
 // 响应拦截器
 service.interceptors.response.use((response: AxiosResponse) => {
 
-    removePending(response) // 在请求结束后，移除本次请求
+    // removePending(response) // 在请求结束后，移除本次请求
     const status = response.status
-    console.log(status)
     let msg = ''
     if (status < 200 || status >= 300) {
         // 处理http错误，抛到业务代码
@@ -146,7 +168,7 @@ service.interceptors.response.use((response: AxiosResponse) => {
             response.data.msg = msg
         }
     }
-    return response
+    return response.data;
 }, (error) => {
     if (axios.isCancel(error)) {
         console.log('repeated request: ' + error.message)

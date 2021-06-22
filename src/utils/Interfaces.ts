@@ -8,7 +8,7 @@
 
 interface PartyBranch{
     name: string,   // 支部名称
-    value: string   // 向后端请求的值
+    id: string   // 向后端请求的值
 }
 
 interface IMemberList {

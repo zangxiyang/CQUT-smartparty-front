@@ -1,10 +1,16 @@
 <template>
-  <base-content-layout>
-    <select-container title="党支部" :items="parties" v-model="test" @change="testChange"/>
-    <card-view>
-      <member-list :lists="list" @click="click"/>
-    </card-view>
-  </base-content-layout>
+  <select-container-layout title="党支部" v-model="orgId" @change="selectContainerClick">
+    <member-list :lists="list" @click="click"/>
+    <div class="party-pagination f-jc-c al-c">
+      <el-pagination background layout="prev,pager,next"
+                     :total="pagination.totalCount"
+                     :page-size="pagination.pageSize"
+                     :current-page="pagination.currPage"
+                     :page-count="pagination.totalPage"
+                     @current-change="currentChange"
+                     class="mt-20"/>
+    </div>
+  </select-container-layout>
 </template>
 
 <script lang="ts">
@@ -15,93 +21,73 @@
  * 时间: 2021/6/16
  * 版本: V1
  */
-import {defineComponent, reactive, ref} from 'vue';
-import BaseContentLayout from "@/layout/BaseContentLayout.vue";
-import SelectContainer from "@/components/SelectContainer.vue";
-import CardView from "@/components/CardView.vue";
+import {defineComponent, ref} from 'vue';
 import MemberList from "@/components/MemberList.vue";
-import {IMemberList} from "@/utils/Interfaces";
-
-import {PartyBranch} from "@/utils/Interfaces";
 import {useRouter} from "vue-router";
+import SelectContainerLayout from "@/layout/SelectContainerLayout.vue";
 
+import {BranchWorkService} from "@/api";
+import {IPagination} from "@/models/IPagination";
 export default defineComponent({
   name: "AllPartyMember",
-  components: {MemberList, CardView, SelectContainer, BaseContentLayout},
+  components: {SelectContainerLayout, MemberList},
   setup(){
-    const test = ref('0');
-    const testChange = ()=>{
-      console.log(`当前选中的项：${test.value}`);
+    const orgId = ref(1);
+    const selectContainerClick = ()=>{
+      console.log(`当前选中的项：${orgId.value}`);
+      pagination.value.currPage = 1;
+      loadData(orgId.value)
     }
     const router = useRouter()
 
+    // 构建分页对象
+    const pagination = ref<IPagination>({
+      totalCount: 0,
+      pageSize: 0,
+      totalPage: 0,
+      currPage: 0
+    } as IPagination);
+
     // 成员列表
-    let list = [];
-    for (let i = 0 ; i < 20; i ++){
-      let tmp = {
-        name: `测试姓名${i}`,
-        id: `${i}`,
-      } as IMemberList
-      if (i % 2 === 0) tmp["img"] = "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg";
-      list.push(tmp);
+    const memberList = ref([]);
+    // 初始化加载
+
+    const loadData = (orgId = 1,page= 1): void=>{
+      memberList.value = []
+      BranchWorkService.getPartyMemberList(orgId,page,12).then(res=>{
+        const {list, ...params} = res.data
+        memberList.value = list     //   填充数据
+        pagination.value = params;  //   初始化pagination对象
+      })
     }
-    list = ref(list);
+
+    // 初始化方法
+    const initLoad = () =>{
+      loadData(orgId.value)
+    }
+    // 分页被改变页数
+    const currentChange = (page: number)=>{
+      loadData(orgId.value,page)
+    }
+
+    initLoad(); // 初始化加载
+
+
     const click = (id: string)=>{
       router.push(`/branch/member/${id}`);
     }
 
 
+
+
+    // 分页
+
+
     return{
-      testChange,test,list,
-      click
-    }
-  },
-  data() {
-    return {
-      parties: [
-        {
-          name: '测试党支部',
-          value: '0'
-        },
-        {
-          name: '测试党支部1',
-          value: '1'
-        },
-        {
-          name: '测试党支部2',
-          value: '2'
-        }, {
-          name: '测试党支部3',
-          value: '3'
-        }, {
-          name: '测试党支部4',
-          value: '4'
-        },
-        {
-          name: '测试党支部4',
-          value: '5'
-        },
-        {
-          name: '测试党支部4',
-          value: '6'
-        },
-        {
-          name: '测试党支部4',
-          value: '7'
-        },
-        {
-          name: '测试党支部4',
-          value: '8'
-        },
-        {
-          name: '测试党支部4',
-          value: '9'
-        },
-        {
-          name: '测试党支部4',
-          value: '10'
-        },
-      ] as PartyBranch[],
+      selectContainerClick,orgId,list: memberList,
+      click,
+      pagination,
+      currentChange
     }
   }
 })

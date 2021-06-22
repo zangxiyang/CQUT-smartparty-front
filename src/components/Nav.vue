@@ -73,9 +73,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, reactive} from "vue"
-import {clearPending} from "@/utils/https";
-// import {useRouter} from "vue-router"
+import {defineComponent, ref} from "vue"
 
 export default defineComponent({
   setup() {

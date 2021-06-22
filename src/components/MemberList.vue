@@ -2,20 +2,17 @@
 <div class="party-member-list">
   <el-row :gutter="20" type="flex">
     <el-col :span="4" v-for="item in lists" :key="item.id">
-      <template v-if="item.year == null">
-        <member-card :id="item.id" :img="item?.img" :name="item.name" @click="onCardClick(item.id)"/>
+      <template v-if="item.partyage == null">
+        <member-card :id="item.id" :img="item?.picurl" :name="item.name" @click="onCardClick(item.id)"/>
       </template>
       <template v-else>
-        <member-card :id="item.id" :img="item?.img"
-                     :party-year="item.year"
+        <member-card :id="item.id" :img="item?.picurl"
+                     :party-year="item.partyage"
                      :desc="item.info"
                      :name="item.name" @click="onCardClick(item.id)" big/>
       </template>
     </el-col>
   </el-row>
-  <div class="party-pagination f-jc-c al-c">
-    <el-pagination background layout="prev,pager,next" :total="200" class="mt-20"/>
-  </div>
 </div>
 </template>
 
@@ -29,7 +26,7 @@
 */
 import {defineComponent, PropType, reactive, ref,toRefs} from 'vue';
 import {useRouter} from "vue-router";
-import {IMemberList} from "@/utils/Interfaces";
+import {IPartyMember} from "@/models/IPartyMember";
 import MemberCard from "@/components/MemberCard.vue";
 
 export default defineComponent({
@@ -38,7 +35,7 @@ export default defineComponent({
   emits: ['click'],
   props:{
     lists: {
-      type: Array as PropType<IMemberList[]>
+      type: Array as PropType<[IPartyMember]>
     }
   },
   setup(props,{ emit }){

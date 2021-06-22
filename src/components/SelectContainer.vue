@@ -3,14 +3,12 @@
     <div class="left-title f-jc-c al-c">
       {{ title }}
     </div>
-    <div class="right-content">
-      <el-row :gutter="20" type="flex">
-        <el-col v-for="item in items" :key="item.value" :span="4">
-          <el-radio v-model="active" border  :label="item.value" size="mini" @change="$emit('change')">
-            {{ item.name }}
-          </el-radio>
-        </el-col>
-      </el-row>
+    <div class="right-content flex al-c">
+      <div v-for="item in items" :key="item.id" class="mr-10">
+        <el-radio v-model="active" border  :label="item.id" size="mini" @change="$emit('change')">
+          {{ item.name }}
+        </el-radio>
+      </div>
 
     </div>
   </div>
@@ -30,7 +28,7 @@ export default defineComponent({
       default: () => '筛选条件'
     },
     items: Array as PropType<PartyBranch[]>,
-    modelValue: String,
+    modelValue: [String,Number],
   },
   setup(props, {emit}) {
     const active = ref(computed({
@@ -60,12 +58,16 @@ export default defineComponent({
 
   .right-content {
     padding: 5px 10px;
-    margin-left: 20px;
+    margin: 0 20px;
+    flex-wrap: wrap;
+    justify-items: flex-start;
+    align-content: flex-start;
+
+
     ::v-deep {
       .el-radio {
         text-align: center;
         margin: 10px 0;
-        width: 120px;
       }
       .el-radio__input .el-radio__inner {
         display: none;

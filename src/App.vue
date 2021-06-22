@@ -4,6 +4,7 @@
   <main>
     <!--<breadcrumb-nav/>-->
     <!--内容页-->
+    <div> </div>
     <RouterView v-slot="{Component}">
       <keep-alive v-if="$route.meta.keepAlive">
         <component :is="Component">
@@ -16,14 +17,15 @@
   <Footer/>
 </template>
 
-<script>
+<script lang="ts">
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
+import {defineComponent,} from 'vue'
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import BaseContentLayout from "@/layout/BaseContentLayout";
-
-export default {
+import {BaseService, UserService} from "@/api";
+export default defineComponent({
   name: 'App',
   components: {
     BaseContentLayout,
@@ -32,7 +34,7 @@ export default {
     Footer,
     Nav,
   }
-}
+})
 </script>
 
 <style>
