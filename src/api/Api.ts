@@ -13,7 +13,8 @@ export enum ApiEnum{
     BASE_BRANCHES_API = '/front/common/party/list',
     // 全体党员
     WORK_MEMBER_API = '/front/partyWork/partyMemberList',
-    //
+    // 党员详情
+    WORK_MEMBER_DETAIL_API = '/front/partyWork/partyMember/'
 
 }
 

@@ -5,21 +5,21 @@
       <div class="container f-jc-sb al-c">
         <div class="author flex al-c">
           <div class="author-img none-select">
-            <el-image :src="require('@/assets/img/member.png')" style="width: 100%;height: 100%" fit="cover"></el-image>
+            <el-image :src="partyMember.picurl" style="width: 100%;height: 100%" fit="cover"></el-image>
           </div>
           <div class="author-name f-col">
             <div class="space none-select">重庆理工大学</div>
-            <div class="name">臧某某</div>
+            <div class="name">{{partyMember.name}}</div>
           </div>
         </div>
         <div class="badge">
-          <maxer-badge content="测试职务"
-                       title="测试职务"
+          <maxer-badge :content="partyMember.post"
+                       :title="partyMember.post"
                        color="danger"
                        is-popover
                        />
-          <maxer-badge content="正式党员"
-                       title="正式党员"
+          <maxer-badge :content="partyMember.visage"
+                       :title="partyMember.visage"
                        is-popover
                        :left="10"
                        />
@@ -32,9 +32,16 @@
               <div class="info-col">出生日期</div>
             </el-col>
             <el-col :span="19">
-              <div class="info-col" title="重庆理工大学两江人工智能学院党总支">重庆理工大学两江人工智能学院党总支</div>
-              <div class="info-col" title="在当前支部">在当前支部</div>
-              <div class="info-col" title="1999.05.22">1999.05.22</div>
+              <div class="info-col" title="重庆理工大学两江人工智能学院党总支">{{ partyMember.orgName }}</div>
+              <div class="info-col" title="在当前支部">
+                <template v-if="partyMember.status === 1">
+                  在当前党支部
+                </template>
+                <template v-else>
+                  转出
+                </template>
+              </div>
+              <div class="info-col" title="1999.05.22">{{ partyMember.birth }}</div>
             </el-col>
           </el-row>
         </div>
@@ -56,98 +63,103 @@
                 <i class="el-icon-user"></i>
                 姓名
               </template>
-              臧某某
+              {{ partyMember.name }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-user-solid"></i>
                 性别
               </template>
-              男
+              {{ partyMember.sex }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-notebook-1"></i>
                 学历
               </template>
-              本科
+              {{ partyMember.education }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-star-on"></i>
                 担任职务
               </template>
-              测试职务
+              {{ partyMember.post }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-s-flag"></i>
                 政治面貌
               </template>
-              正式党员
+              {{ partyMember.visage }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-s-custom"></i>
                 所属组织
               </template>
-              重庆理工大学两江人工智能学院党总支
+              {{ partyMember.orgName }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-date"></i>
                 申请入党时间
               </template>
-              2000.12.1
+              {{ partyMember.applytime }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-date"></i>
                 确定积极分子时间
               </template>
-              略
+              {{ partyMember.activisttime }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-date"></i>
                 确定发展对象时间
               </template>
-              略
+              {{ partyMember.developtime }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-date"></i>
                 确定预备党员时间
               </template>
-              略
+              {{ partyMember.preparetime }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-date"></i>
                 正式党员时间
               </template>
-              2002.12.1
+              {{ partyMember.formaltime }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-date"></i>
                 转入时间
               </template>
-              暂无
+              {{ partyMember.intotime }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-date"></i>
                 转出时间
               </template>
-              暂无
+              {{ partyMember.outtime }}
             </el-descriptions-item>
             <el-descriptions-item>
               <template #label>
                 <i class="el-icon-question"></i>
                 当前状态
               </template>
-              在当前支部
+              <template v-if="partyMember.status === 1">
+                在当前党支部
+              </template>
+              <template v-else>
+                转出
+              </template>
             </el-descriptions-item>
 
           </el-descriptions>
@@ -158,10 +170,7 @@
         </div>
         <div class="content-container">
           <div class="more-intro">
-            预备党员的预备期为一年。党组织对预备党员应当认真教育和考察。
-            预备党员的义务同正式党员一样。预备党员的权利，除了没有表决权、选举权和被选举权以外，也同正式党员一样。
-            预备党员预备期满，党的支部应当及时讨论他能否转为正式党员。认真履行党员义务，具备党员条件的，应当按期转为正式党员；需要继续考察和教育的，可以延长预备期，但不能超过一年；不履行党员义务，不具备党员条件的，应当取消预备党员资格。预备党员转为正式党员，或延长预备期，或取消预备党员资格，都应当经支部大会讨论通过和上级党组织批准。
-            预备党员的预备期，从支部大会通过他为预备党员之日算起。党员的党龄，从预备期满转为正式党员之日算起。
+            {{ partyMember.introduction }}
           </div>
         </div>
       </div>
@@ -177,10 +186,13 @@
  * 时间: 2021/6/17
  * 版本: V1
  */
-import {defineComponent} from 'vue';
+import {defineComponent, ref} from 'vue';
 import BaseContentLayout from "@/layout/BaseContentLayout.vue";
 import CardView from "@/components/CardView.vue";
 import MaxerBadge from "@/components/MaxerBadge.vue";
+import {IPartyMember} from "@/models/IPartyMember";
+import {BranchWorkService} from "@/api";
+import {visageMap,postMap} from "@/utils/ConstantMap";
 
 export default defineComponent({
   name: "MemberDetail",
@@ -190,9 +202,23 @@ export default defineComponent({
   },
   setup(props) {
     console.log(props.id)
-  },
-  data() {
-    return {}
+    const partyMember = ref<IPartyMember>({} as IPartyMember);
+
+
+    // 初始化
+    const init = ()=>{
+      BranchWorkService.getPartyMemberDetail(parseInt(props.id as string)).then(res=>{
+        partyMember.value = res.data as IPartyMember
+        console.log(partyMember.value)
+        partyMember.value.visage = visageMap(partyMember.value.visage as number);
+        partyMember.value.post = postMap(partyMember.value.post as number);
+      })
+    }
+
+    init();
+    return {
+      partyMember
+    }
   }
 })
 </script>

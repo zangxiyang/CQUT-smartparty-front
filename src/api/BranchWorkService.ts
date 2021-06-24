@@ -11,11 +11,14 @@ import {ApiEnum, getApi} from "@/api/Api";
 import {Configuration} from "@/api/Configuration";
 
 export class BranchWorkService{
-    public static async getPartyMemberList(orgId = 1,page: number = Configuration.page, limit: number = Configuration.limit): Promise<AxiosResponse>{
+    public static async getPartyMemberList(orgid = 1,page: number = Configuration.page, limit: number = Configuration.limit): Promise<AxiosResponse>{
         return request(getApi(ApiEnum.WORK_MEMBER_API),'get',{
-            orgId: orgId,
+            orgid,
             page,
             limit
         })
+    }
+    public static async getPartyMemberDetail(id: number){
+        return request(`${getApi(ApiEnum.WORK_MEMBER_DETAIL_API)}${id}`,'get')
     }
 }

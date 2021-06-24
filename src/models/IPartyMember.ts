@@ -19,11 +19,12 @@ export interface IPartyMember{
     developtime: string,
     preparetime: string,
     formaltime: string,
-    post: number,
+    post: number | string,
     status: number,
     intotime: string,
     outtime: string,
     orgid: number,
-    visage: number,
+    orgName: string,
+    visage: number | string,
     partyage: number | null
 }

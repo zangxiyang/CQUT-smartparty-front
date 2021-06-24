@@ -13,9 +13,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/branch/member/:id',
         name: 'MemberDetail',
         component: () => import('../views/BranchManagement/AllMember/MemberDetail.vue'),
-        meta: {
-            keepAlive: true
-        }
+        props: true
     }, {
         // 工作计划
         path: '/branch/plan/',
