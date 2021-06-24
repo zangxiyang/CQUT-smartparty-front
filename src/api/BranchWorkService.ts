@@ -46,12 +46,12 @@ export class BranchWorkService{
      * 时间: 2021/6/24
      * 版本: V1
     */
-    public static async getPartyWorkList(orgId = 1,page:number = Configuration.page, limit: number = Configuration.limit): Promise<AxiosResponse>{
+    public static async getPartyWorkList(orgId = 1,type=0,page:number = Configuration.page, limit: number = Configuration.limit): Promise<AxiosResponse>{
         return request(getApi(ApiEnum.BRANCH_PARTYWORK_LIST),Methods.GET,{
             orgId,
             page,
             limit,
-            type: 0
+            type
         })
     }
 

@@ -1,25 +1,25 @@
 <template>
-  <div class="list_box_item mb-20 cur-p">
+  <div class="list_box_item mb-20 cur-p" @click="$emit('click',list.id)">
     <div class="cover">
-      <el-image class="image" :src="list.href" :fit="cover" lazy style="height: 100%;width: 100%"></el-image>
+      <el-image class="image" :src="list.picurl" fit="cover" lazy style="height: 100%;width: 100%"></el-image>
     </div>
     <div class="title">
-      <div class="tag mb-5">{{ list.tag }}</div>
+      <div class="tag mb-5">{{ tag }}</div>
       <p :title="list.title">{{ list.title }}</p>
     </div>
     <div class="time-card flex al-c">
       <!--时间卡片-->
       <div class="content">
         <div class="day f-jc-c">
-          18
+          {{ day }}
         </div>
         <div class="year-month f-jc-c">
-          2021.06
+          {{ year_month }}
         </div>
       </div>
     </div>
-    <div class="narrator-card f-jc-c al-c">
-      {{ list.narrator }}
+    <div class="narrator-card f-jc-c al-c" v-if="list.hostpeople">
+      {{ list.hostpeople }}
     </div>
     <div class="btn-play" v-if="video"></div>
   </div>
@@ -34,33 +34,32 @@
  * 版本: V1
 */
 import {defineComponent, PropType, ref} from "vue";
+import {IArticleList} from "@/models/IArticleList";
 
-export interface ColumnProps {
-  id: string
-  href: string,
-  title: string,
-  narrator: string,
-  tag: string,
-  time: any
-}
 
 export default defineComponent({
   name: "VideoArticlesItem",
+  emits: ['click'],
   props: {
     list: {
-      type: Object as PropType<ColumnProps>,
+      type: Object as PropType<IArticleList>,
       required: true
     },
     video: {
       type: Boolean,
       default: ()=> true
-    }
+    },
+    tag: String
   },
   setup(props) {
-    const cover = ref('cover');
+
     //TODO 处理时间
+    const timeArr = props.list.time.split('-');
+    const day = timeArr[2]
+    const year_month = `${timeArr[0]}.${timeArr[1]}`
     return {
-      cover
+      day: ref(day),
+      year_month: ref(year_month)
     }
   }
 })

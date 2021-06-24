@@ -40,7 +40,7 @@ export default defineComponent({
     // 加载方法
     const loadData = (orgId = 1,page= 1): void=>{
       listArr.value = []
-      BranchWorkService.getPartyWorkList(orgId,page,6).then(res=>{
+      BranchWorkService.getPartyWorkList(orgId,0,page,6).then(res=>{
         console.log(res)
         const {list, ...params} = res.data
         listArr.value = list     //   填充数据

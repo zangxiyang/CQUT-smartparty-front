@@ -42,3 +42,18 @@ export function visageMap(val: number): string{
             return "错误";
     }
 }
+
+export enum ArticleType{
+    WORK_PLANE,
+    WORK_SUMMARY,
+    REPORT,
+    PARTY_MEETING,
+    BRANCH_MEETING,
+    PARTY_LESSON,
+    PARTY_DAY,
+    DEMOCRATIC_REVIEW,
+    VOLUNTEER_ACTIVITY,
+    REVISIT_PARTY,
+    SECRETARY_ROTATION,
+    SECRETARY_LESSON
+}
