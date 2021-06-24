@@ -10,7 +10,7 @@
       <template v-if="index % 2 !== 0">
         <div class="content flex">
           <div class="img">
-            <el-image :src="item.imgUrl" fit="cover" lazy style="width: 100%" :preview-src-list="[item.imgUrl]"/>
+            <el-image :src="item.picurl" fit="cover" lazy style="width: 100%;height: 100%" :preview-src-list="[item.picurl]"/>
           </div>
           <div class="arrow">
             <img/>
@@ -18,14 +18,14 @@
           <div class="desc">
             <h3 class="date-time">{{ item.date }}</h3>
             <h3 class="title">{{ item.title }}</h3>
-            <div class="content">{{ item.desc }}</div>
+            <div class="content">{{ item.content }}</div>
           </div>
         </div>
       </template>
       <template v-else>
         <div class="content flex">
           <div class="img" style="order: 3;">
-            <el-image :src="item.imgUrl" fit="cover" lazy style="width: 100%" :preview-src-list="[item.imgUrl]"/>
+            <el-image :src="item.picurl" fit="cover" lazy style="width: 100%;height: 100%" :preview-src-list="[item.picurl]"/>
           </div>
           <div class="arrow" style="order: 2;width: 47px;margin-left: 33px">
             <img class="arrow2"/>
@@ -33,7 +33,7 @@
           <div class="desc" style="order: 1">
             <h3 class="date-time">{{ item.date }}</h3>
             <h3 class="title">{{ item.title }}</h3>
-            <div class="content">{{ item.desc }}</div>
+            <div class="content">{{ item.content }}</div>
           </div>
         </div>
       </template>
@@ -91,6 +91,7 @@ export default defineComponent({
         .img{
           width: 448px;
           text-align: right;
+          max-height: 300px;
           overflow: hidden;
         }
         .desc{

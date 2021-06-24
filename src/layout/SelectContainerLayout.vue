@@ -18,7 +18,7 @@ import SelectContainer from "@/components/SelectContainer.vue";
 
 export default defineComponent({
   name: "SelectContainerLayout",
-  emits: ['change'],
+  emits: ['change','update:modelValue'],
   components: {SelectContainer, CardView, BaseContentLayout},
   props:{
     title: String,

@@ -1,5 +1,5 @@
 <template>
-  <select-container-layout title="党支部" v-model="active">
+  <select-container-layout title="党支部" v-model="active" @change="onSelectChange">
     <TimeLine :list="timeLineData"/>
   </select-container-layout>
 </template>
@@ -12,30 +12,36 @@
  * 时间: 2021/6/21
  * 版本: V1
 */
-import {defineComponent, ref} from 'vue';
+import {defineComponent, ref,toRaw} from 'vue';
 import SelectContainerLayout from "@/layout/SelectContainerLayout.vue";
 import TimeLine from "@/components/TimeLine.vue";
 import {ITimeLineProps} from '@/models/ITimeLineProps'
+import {IPartyHistory} from "@/models/IPartyHistory";
+import {BranchHistoryService} from "@/api";
+import {useStore} from "vuex";
 
 
 export default defineComponent({
   name: "History",
   components: {TimeLine, SelectContainerLayout},
   setup(props){
-    const active = ref('0');
-    const timeLineData = [];
-    for (let i = 0 ; i < 7; i ++){
-      const tmp = {
-        date: `2021-06-0${i}`,
-        title: `测试标题内容${i}`,
-        desc: "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容",
-        imgUrl: 'https://www.sf-express.com/cn/sc/download/SF-CN-DH-3.jpg'
-      } as ITimeLineProps
-      timeLineData.push(tmp);
+    const active = ref(1);
+    const timeLineData = ref<IPartyHistory[]>();
+    BranchHistoryService.getHistory(active.value).then(res=>{
+      timeLineData.value = res.data as IPartyHistory[]
+    })
+    const onSelectChange = ()=>{
+      console.log('测试改变', active.value)
+      timeLineData.value = [] as IPartyHistory[];
+      BranchHistoryService.getHistory(active.value).then(res=>{
+        console.log(active.value)
+        timeLineData.value = res.data as IPartyHistory[];
+      })
     }
     return {
       active,
-      timeLineData: ref(timeLineData)
+      timeLineData,
+      onSelectChange
     }
   },
 })

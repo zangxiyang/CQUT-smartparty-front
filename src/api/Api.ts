@@ -14,7 +14,9 @@ export enum ApiEnum{
     // 全体党员
     WORK_MEMBER_API = '/front/partyWork/partyMemberList',
     // 党员详情
-    WORK_MEMBER_DETAIL_API = '/front/partyWork/partyMember/'
+    WORK_MEMBER_DETAIL_API = '/front/partyWork/partyMember/',
+    // 支部发展历程
+    BRANCH_HISTORY_API = '/front/devhistory/member/list'
 
 }
 
