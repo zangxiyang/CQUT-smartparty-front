@@ -16,7 +16,12 @@ export enum ApiEnum{
     // 党员详情
     WORK_MEMBER_DETAIL_API = '/front/partyWork/partyMember/',
     // 支部发展历程
-    BRANCH_HISTORY_API = '/front/devhistory/member/list'
+    BRANCH_HISTORY_API = '/front/devhistory/member/list',
+    // 支部工作计划，支部工作总结，书记讲党课，述职报告
+    BRANCH_PARTYWORK_LIST = '/front/partyWork/list',
+    // 工作计划文章详情
+    BRANCH_WORK_DETAIL_API = '/front/partyWork/workDetail'
+
 
 }
 

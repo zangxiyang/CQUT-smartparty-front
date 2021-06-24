@@ -9,6 +9,8 @@ export default createStore({
       test: 1,
       name: "测试名字"
     },
+    vuexNavName: '',
+    vuexNavRouterName: '',
     vuexBreadNav: [
       {
         name: 'AllPartyMember',

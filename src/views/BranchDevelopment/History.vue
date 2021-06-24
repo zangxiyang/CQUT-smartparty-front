@@ -31,7 +31,6 @@ export default defineComponent({
       timeLineData.value = res.data as IPartyHistory[]
     })
     const onSelectChange = ()=>{
-      console.log('测试改变', active.value)
       timeLineData.value = [] as IPartyHistory[];
       BranchHistoryService.getHistory(active.value).then(res=>{
         console.log(active.value)

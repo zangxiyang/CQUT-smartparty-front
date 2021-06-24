@@ -10,9 +10,9 @@ import {Methods, request} from "@/utils/https";
 import {ApiEnum, getApi} from "@/api/Api";
 
 export class BranchHistoryService{
-    public static async getHistory(id = 1): Promise<AxiosResponse>{
+    public static async getHistory(orgid = 1): Promise<AxiosResponse>{
         return request(getApi(ApiEnum.BRANCH_HISTORY_API),Methods.GET,{
-            id
+            orgid
         })
     }
 }

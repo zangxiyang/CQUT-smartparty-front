@@ -1,17 +1,17 @@
 <template>
-<div class="article" @click="onSkipArticle(list.id)" >
+<div class="article" >
   <p class="bt">{{list.title}}</p>
   <div class="article_content">
     <div class="img">
-      <img :src="list.href" alt="">
+      <img :src="list.picurl" alt="">
       <div class="sj">
-        <p>17</p>
-        <span>2021.06</span>
+        <p>{{day}}</p>
+        <span>{{year_month}}</span>
       </div>
     </div>
     <div class="pre">
       <p class="zy">
-       {{list.content}}
+       {{list.remark}}
       </p>
     </div>
   </div>
@@ -19,29 +19,25 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from "vue";
-import {ArticleProps} from "@/models/IArticleProps";
+import {defineComponent, PropType, ref, toRaw} from "vue";
 import {useRouter} from "vue-router";
+import {IArticleList} from "@/models/IArticleList";
 
 export default defineComponent({
   name: "ArticleItem",
   props:{
     list:{
-      type:Object as PropType<ArticleProps>,
+      type:Object as PropType<IArticleList>,
       required:true
     }
   },
-  setup(){
-    const router = useRouter()
-    const onSkipArticle =(id:string)=>{
-      // 跳转到图文详情页
-      if(id){
-        router.push(`/train/member/${id}`);
-      }
-
-    }
+  setup(props){
+    // 处理日期
+    const date = toRaw(props.list.time).split('-');
+    const day = ref(date[2]);
+    const year_month = ref(`${date[0]}.${date[1]}`);
     return{
-      onSkipArticle
+      day,year_month
     }
   }
 })

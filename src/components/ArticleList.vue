@@ -1,16 +1,14 @@
 <template>
   <div class="content">
-    <article-item  v-for="(item,index) in list" :list="item" :key="index" @click="onArticleItemClick(item.id)"></article-item>
-  </div>
-  <div class="party-pagination f-jc-c al-c">
-    <el-pagination background layout="prev,pager,next" :total="200" class="mt-20"/>
+    <article-item  v-for="(item,index) in list"
+                   :list="item" :key="index" @click="onArticleItemClick(item.id)"></article-item>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
 import ArticleItem from './ArticleItem.vue'
-import {ArticlelistProps} from '@/models/IArticleProps'
+import {IArticleList} from "@/models/IArticleList";
 
 
 interface PartyBranch {
@@ -24,66 +22,17 @@ export default defineComponent({
   emits: ['click'],
   props:{
     list:{
-      type:Object as PropType<ArticlelistProps[]>,
+      type:Object as PropType<IArticleList[]>,
       required:true
     }
   },
   components: {ArticleItem},
   setup(props, { emit }){
-    const onArticleItemClick = (id: string)=>{
-      emit('click')
+    const onArticleItemClick = (id: number)=>{
+      emit('click', id)
     }
     return {
       onArticleItemClick
-    }
-  },
-  data() {
-    return {
-      parties: [
-        {
-          name: '测试党支部',
-          value: '0'
-        },
-        {
-          name: '测试党支部1',
-          value: '1'
-        },
-        {
-          name: '测试党支部2',
-          value: '2'
-        }, {
-          name: '测试党支部3',
-          value: '3'
-        }, {
-          name: '测试党支部4',
-          value: '4'
-        },
-        {
-          name: '测试党支部4',
-          value: '5'
-        },
-        {
-          name: '测试党支部4',
-          value: '6'
-        },
-        {
-          name: '测试党支部4',
-          value: '7'
-        },
-        {
-          name: '测试党支部4',
-          value: '8'
-        },
-        {
-          name: '测试党支部4',
-          value: '9'
-        },
-        {
-          name: '测试党支部4',
-          value: '10'
-        },
-      ] as PartyBranch[],
-      test: '0'
     }
   }
 })
