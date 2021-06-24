@@ -2,7 +2,7 @@
   <div class="party-time-line-container">
     <div class="now-day f-jc-c al-c none-select">
       <div class="today">
-        今天
+        开始
       </div>
     </div>
 
