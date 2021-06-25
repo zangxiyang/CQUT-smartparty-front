@@ -56,7 +56,7 @@
         </el-submenu>
         <el-submenu index="7">
           <template #title>党员发展</template>
-          <el-menu-item index="7-1">入党誓言</el-menu-item>
+          <!--<el-menu-item index="7-1">入党誓言</el-menu-item>-->
           <el-menu-item index="7-2" :route="{name: 'JoinProcess'}">入党流程</el-menu-item>
           <el-menu-item index="7-3" :route="{name: 'ExpandPartyMember'}">年度发展党员</el-menu-item>
         </el-submenu>

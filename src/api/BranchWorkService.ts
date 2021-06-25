@@ -168,4 +168,18 @@ export class BranchWorkService {
             limit
         })
     }
+    /**
+     * 名称: getAppraisal
+     * 说明: 获取民主评议结果
+     * 作者: Seale
+     * 时间: 2021/6/25
+     * 版本: V1
+    */
+    public static async getAppraisal(workId: number, page = 1 , limit = 6): Promise<AxiosResponse>{
+        return request(getApi(ApiEnum.PARTY_DEMOCRATIC_RESULT_API),Methods.GET,{
+            workId,
+            page,
+            limit
+        })
+    }
 }

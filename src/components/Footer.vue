@@ -14,22 +14,22 @@
             <span>渝ICP备05001039号</span>
         </a>
       </div>
-      <div class="bottom-state f-jc-c al-c mt-5">
-        <!--todo-->
-        <!--<div class="state-item">
+      <!--<div class="bottom-state f-jc-c al-c mt-5">
+        &lt;!&ndash;todo&ndash;&gt;
+        &lt;!&ndash;<div class="state-item">
           <el-tooltip placement="top" effect="light" content="本站托管于阿里云" :offset="35">
             <a href="https://www.aliyun.com/" target="_blank">
               <icon-font name="iconaliyun1" size="80px"/>
             </a>
           </el-tooltip>
-        </div>-->
+        </div>&ndash;&gt;
         <div class="state-item">
-          <!--todo-->
+          &lt;!&ndash;todo&ndash;&gt;
         </div>
-        <div class="state-item">
+        &lt;!&ndash;<div class="state-item">
           <button4-party text="测试按钮" href="https://cqut.edu.cn"/>
-        </div>
-      </div>
+        </div>&ndash;&gt;
+      </div>-->
       <!--如果不需要直接注释掉-->
       <div class="f-jc-c al-c mt-10">
         <span class="mr-5">版权所有：</span>

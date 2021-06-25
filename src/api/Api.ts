@@ -34,7 +34,9 @@ export enum ApiEnum{
     // 年度发展党员统计，返回发展年度
     PARTY_GROW_API = '/front/partyWork/partyGrow',
     // 年度发展党员列表
-    PARTY_GROW_LIST_API = '/front/partyWork/partyGrow/list'
+    PARTY_GROW_LIST_API = '/front/partyWork/partyGrow/list',
+    // 民主评议结果
+    PARTY_DEMOCRATIC_RESULT_API = '/front/assessperson/getAppraisal'
 }
 
 /**
