@@ -140,7 +140,6 @@ export default defineComponent({
       options,
       pagination,
       currentChange,
-      selectContainerClick
     }
   }
 })
