@@ -95,13 +95,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style scoped lang="scss">
-.content{
-  display: flex;
-  flex-wrap: wrap-reverse;
-  justify-content:space-around;
-  align-items:center;
-}
-
-</style>
