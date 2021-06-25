@@ -141,4 +141,31 @@ export class BranchWorkService {
             limit
         })
     }
+
+    /**
+     * 名称: getPartyGrowInfo
+     * 说明: 获取年度发展党员基础信息
+     * 作者: Seale
+     * 时间: 2021/6/25
+     * 版本: V1
+    */
+    public static async getPartyGrowInfo(orgId = 1): Promise<AxiosResponse>{
+        return request(`${getApi(ApiEnum.PARTY_GROW_API)}/${orgId}`,Methods.GET)
+    }
+
+    /**
+     * 名称: getPartyGrowList
+     * 说明: 获取年度发展党员列表
+     * 作者: Seale
+     * 时间: 2021/6/25
+     * 版本: V1
+    */
+    public static async getPartyGrowList(year:string, orgId = 1, page = 1, limit = 18): Promise<AxiosResponse>{
+        return request(getApi(ApiEnum.PARTY_GROW_LIST_API),Methods.GET,{
+            year,
+            orgId,
+            page,
+            limit
+        })
+    }
 }

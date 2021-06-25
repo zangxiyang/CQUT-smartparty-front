@@ -30,9 +30,11 @@ export enum ApiEnum{
     // 党支部年度考核等级
     BRANCH_YEAR_LEVEL_API = '/front/partyWork/listKhdj',
     // 党员政治生日
-    PARTY_MEMBER_BIRTH_API = '/front/birth/member/list'
-
-
+    PARTY_MEMBER_BIRTH_API = '/front/birth/member/list',
+    // 年度发展党员统计，返回发展年度
+    PARTY_GROW_API = '/front/partyWork/partyGrow',
+    // 年度发展党员列表
+    PARTY_GROW_LIST_API = '/front/partyWork/partyGrow/list'
 }
 
 /**
