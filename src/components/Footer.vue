@@ -45,11 +45,9 @@
 
 <script lang="ts">
 import {defineComponent, ref} from 'vue';
-import Button4Party from "@/components/Button4Party.vue";
 
 export default defineComponent({
   name: "Footer",
-  components: {Button4Party},
   setup() {
     const date = ref<string>(new Date().getFullYear().toString());
     return {date}
