@@ -66,4 +66,20 @@ export class BranchWorkService{
     public static async getPartyWorkDetail(workId: number): Promise<AxiosResponse>{
         return request(`${getApi(ApiEnum.BRANCH_WORK_DETAIL_API)}/${workId}`,Methods.GET)
     }
+
+    /**
+     * 名称: getStudyNote
+     * 说明: 获取学习笔记列表
+     * 作者: Seale
+     * 时间: 2021/6/25
+     * 版本: V1
+    */
+    public static async getStudyNote(orgId = 1,page = 1, limit = 12): Promise<AxiosResponse>{
+        return request(getApi(ApiEnum.STUDY_NOTE_API),Methods.GET,{
+            orgId,
+            page,
+            limit
+        });
+    }
+
 }

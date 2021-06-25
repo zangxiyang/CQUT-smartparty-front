@@ -20,7 +20,11 @@ export enum ApiEnum{
     // 支部工作计划，支部工作总结，书记讲党课，述职报告
     BRANCH_PARTYWORK_LIST = '/front/partyWork/list',
     // 工作计划文章详情
-    BRANCH_WORK_DETAIL_API = '/front/partyWork/workDetail'
+    BRANCH_WORK_DETAIL_API = '/front/partyWork/workDetail',
+    // 学习笔记
+    STUDY_NOTE_API = '/front/training/getNotes',
+    // 政治生日场景
+    BIRTH_SCENES_API = 'front/birth/scenes/list'
 
 
 }

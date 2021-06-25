@@ -1,11 +1,19 @@
 <template>
-  <select-container-layout title="党支部" v-model="active">
+  <select-container-layout v-model="active" title="党支部" @change="selectContainerClick">
     <el-row :gutter="20" type="flex">
       <el-col v-for="item in listArr" :key="item.id" :span="12">
-        <video-articles-item :video="false" :list="item" style="margin: 0 auto; margin-bottom: 20px"/>
+        <video-articles-item :list="item" style="margin: 0 auto; margin-bottom: 20px" @click="click" tag="重温入党誓言"/>
       </el-col>
     </el-row>
-    <el-pagination background layout="prev,pager,next" :total="200" class="f-jc-c al-c mt-20"/>
+    <div class="party-pagination f-jc-c al-c">
+      <el-pagination background layout="prev,pager,next"
+                     :total="pagination.totalCount"
+                     :page-size="pagination.pageSize"
+                     :current-page="pagination.currPage"
+                     :page-count="pagination.totalPage"
+                     @current-change="currentChange"
+                     class="mt-20"/>
+    </div>
   </select-container-layout>
 </template>
 
@@ -20,40 +28,71 @@
 import {defineComponent, ref} from 'vue';
 import SelectContainerLayout from "@/layout/SelectContainerLayout.vue";
 import VideoArticlesItem from "@/components/VideoArticlesItem.vue";
+import {IArticleList} from "@/models/IArticleList";
+import {useRouter} from "vue-router";
+import {BranchWorkService} from "@/api";
+import {ArticleType} from "@/utils/ConstantMap";
+import {IPagination} from "@/models/IPagination";
 
 
 export default defineComponent({
   name: "ReviewParty",
   components: {VideoArticlesItem, SelectContainerLayout},
   setup(){
-    const active = ref('0');
-    const listArr =[{
-      id:'1',
-      href:'https://z3.ax1x.com/2021/06/17/2zmvy6.jpg',
-      tag:'重温入党誓词',
-      title: '我叫江小白生活很简单 asfasfasdfasdfasdfasdfwefv gdfg sdgfhmn fgh jmghjm,ghdgf ',
-      narrator:"什么什么部门",
-      time: '2021年5月14日/15日 19:30'
-    },{
-      id:'2',
-      href:'https://z3.ax1x.com/2021/06/17/2zmvy6.jpg',
-      tag:'重温入党誓词',
-      title: '我叫江小白生活很简单 asfasfasdfasdfasdfasdfwefv gdfg sdgfhmn fgh jmghjm,ghdgf ',
-      narrator:"什么什么部门",
-      time: '2021年5月14日/15日 19:30'
-    },
-      {
-        id:'3',
-        href:'https://z3.ax1x.com/2021/06/17/2zmvy6.jpg',
-        tag:'重温入党誓词',
-        title: '我叫江小白生活很简单 asfasfasdfasdfasdfasdfwefv gdfg sdgfhmn fgh jmghjm,ghdgf ',
-        narrator:"谁谁谁",
-        time: '2021年5月14日/15日 19:30'
-      }]
+    const active = ref(1);
+    const listArr = ref<IArticleList[]>();
+    const router = useRouter();
+    // 加载方法
+    const loadData = (orgId = 1,page= 1): void=>{
+      listArr.value = []
+      BranchWorkService.getPartyWorkList(orgId,ArticleType.PARTY_DAY,page,6).then(res=>{
+        console.log(res)
+        const {list, ...params} = res.data
+        listArr.value = list     //   填充数据
+        pagination.value = params;  //   初始化pagination对象
+        // 使页面滑动到最顶部
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        })
+      })
+    }
+    // 构建分页对象
+    const pagination = ref<IPagination>({
+      totalCount: 0,
+      pageSize: 0,
+      totalPage: 0,
+      currPage: 0
+    } as IPagination);
+
+    // 分页被改变页数
+    const currentChange = (page: number)=>{
+      loadData(active.value,page)
+    }
+    // 选择支部被改变
+    const selectContainerClick = ()=>{
+      loadData(active.value)
+    }
+    // 初始化方法
+    const initLoad = () =>{
+      loadData(active.value)
+    }
+    //====================//====================//====================//====================
+
+    initLoad(); // 初始化数据加载
+
+    const click = (id: number)=>{
+
+      router.push(`/article/${id}`);
+    }
 
     return {
-      listArr: ref(listArr),
-      active
+      active,
+      listArr,
+      click,
+      currentChange,
+      selectContainerClick,
+      pagination
     }
   }
 })
