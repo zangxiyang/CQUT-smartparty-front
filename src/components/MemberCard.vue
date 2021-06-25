@@ -13,11 +13,11 @@
       </div>
       <div class="desc f-jc-c al-c mb-5">
         <!--更多信息-->
-        于2020-10-05入党
+        于{{date}}入党
       </div>
       <div class="party-year f-jc-c al-c">
         <!--党龄-->
-        党龄x年
+        党龄{{partyYear}}年
       </div>
     </div>
   </div>
@@ -39,7 +39,8 @@ export default defineComponent({
     name: [String,Number],
     img: String,
     id: [String,Number],
-    partyYear: String,  // 党龄
+    partyYear: [Number,String],  // 党龄
+    date: String,       // 入党时间
     desc: String,       // 其他介绍
     big: {
       type: Boolean,

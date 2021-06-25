@@ -1,6 +1,15 @@
 <template>
-<select-container-layout title="党支部">
+<select-container-layout title="党支部"  v-model="orgId" @change="selectContainerClick">
   <member-list @click="click" :lists="list"/>
+  <div class="party-pagination f-jc-c al-c">
+    <el-pagination background layout="prev,pager,next"
+                   :total="pagination.totalCount"
+                   :page-size="pagination.pageSize"
+                   :current-page="pagination.currPage"
+                   :page-count="pagination.totalPage"
+                   @current-change="currentChange"
+                   class="mt-20"/>
+  </div>
 </select-container-layout>
 </template>
 
@@ -17,33 +26,68 @@ import SelectContainerLayout from "@/layout/SelectContainerLayout.vue";
 import MemberList from "@/components/MemberList.vue";
 import {IMemberList} from "@/utils/Interfaces";
 import {useRouter} from "vue-router";
+import {IPagination} from "@/models/IPagination";
+import {BranchWorkService} from "@/api";
 
 export default defineComponent({
   name: "MemberBirthday",
   components: {MemberList, SelectContainerLayout},
-  setup(props){
-    const router = useRouter();
-    // 成员列表
-    let list = [];
-    for (let i = 0 ; i < 20; i ++){
-      let tmp = {
-        name: `测试姓名${i}`,
-        id: `${i}`,
-        year: String(i),
-        info: '于2015-12-02入党'
-      } as IMemberList
-      if (i % 2 === 0) tmp["img"] = "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg";
-      list.push(tmp);
+  setup(){
+    const orgId = ref(1);
+    const selectContainerClick = ()=>{
+      loadData(orgId.value,1)
     }
-    list = ref(list);
+    const router = useRouter()
+
+    // 构建分页对象
+    const pagination = ref<IPagination>({
+      totalCount: 0,
+      pageSize: 0,
+      totalPage: 0,
+      currPage: 0
+    } as IPagination);
+
+    // 成员列表
+    const memberList = ref([] as IMemberList);
+    // 初始化加载
+
+    const loadData = (orgId = 1,page= 1): void=>{
+      memberList.value = []
+      BranchWorkService.getPartyMemberBirth(orgId,page,12).then(res=>{
+        console.log(res.data)
+        const {list, ...params} = res.data
+        memberList.value = list     //   填充数据
+        pagination.value = params;  //   初始化pagination对象
+      })
+    }
+
+    // 初始化方法
+    const initLoad = () =>{
+      loadData(orgId.value)
+    }
+    // 分页被改变页数
+    const currentChange = (page: number)=>{
+      loadData(orgId.value,page)
+    }
+
+    initLoad(); // 初始化加载
+
+
     const click = (id: string)=>{
-      alert(id);
       router.push(`/branch/member/${id}`);
     }
 
 
+
+
+    // 分页
+
+
     return{
-      click,list
+      selectContainerClick,orgId,list: memberList,
+      click,
+      pagination,
+      currentChange
     }
   },
 })

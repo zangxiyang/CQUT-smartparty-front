@@ -51,7 +51,7 @@
         <el-submenu index="6">
           <template #title>政治生日</template>
           <el-menu-item index="6-1" :route="{name: 'ActivityScene'}">政治生日活动场景</el-menu-item>
-          <el-menu-item index="6-2" :route="{name: 'Recollection'}">政治生日感言</el-menu-item>
+          <!--<el-menu-item index="6-2" :route="{name: 'Recollection'}">政治生日感言</el-menu-item>-->
           <el-menu-item index="6-3" :route="{name: 'MemberLife'}">党员政治生日</el-menu-item>
         </el-submenu>
         <el-submenu index="7">

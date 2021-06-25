@@ -2,12 +2,13 @@
 <div class="party-member-list">
   <el-row :gutter="20" type="flex">
     <el-col :span="4" v-for="item in lists" :key="item.id">
-      <template v-if="item.partyage == null">
+      <template v-if="item.partyage === null">
         <member-card :id="item.id" :img="item?.picurl" :name="item.name" @click="onCardClick(item.id)"/>
       </template>
       <template v-else>
         <member-card :id="item.id" :img="item?.picurl"
                      :party-year="item.partyage"
+                     :date="item.preparetime"
                      :desc="item.info"
                      :name="item.name" @click="onCardClick(item.id)" big/>
       </template>
@@ -39,7 +40,6 @@ export default defineComponent({
     }
   },
   setup(props,{ emit }){
-
     // 卡片点击跳转事件
     const onCardClick = (id: string)=>{
       emit('click',id); // 点击事件

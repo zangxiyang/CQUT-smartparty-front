@@ -23,8 +23,14 @@ export enum ApiEnum{
     BRANCH_WORK_DETAIL_API = '/front/partyWork/workDetail',
     // 学习笔记
     STUDY_NOTE_API = '/front/training/getNotes',
-    // 政治生日场景
-    BIRTH_SCENES_API = 'front/birth/scenes/list'
+    // 党费缴纳列表
+    PARTY_FEE_API = '/front/partyWork/getPayment',
+    // 党组织关系转接
+    PARTY_RELATION_API = '/front/partyWork/getTransfer',
+    // 党支部年度考核等级
+    BRANCH_YEAR_LEVEL_API = '/front/partyWork/listKhdj',
+    // 党员政治生日
+    PARTY_MEMBER_BIRTH_API = '/front/birth/member/list'
 
 
 }

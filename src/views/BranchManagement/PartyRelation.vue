@@ -1,12 +1,12 @@
 <template>
-<select-container-layout title="党支部" v-model="activeBranch">
+<select-container-layout  v-model="active" title="党支部"  @change="selectContainerClick">
   <el-table
       row-key="date"
       ref="filterTable"
-      :data="tableData"
+      :data="listArr"
       style="width: 100%">
     <el-table-column
-        prop="date"
+        prop="outtime"
         label="日期"
         sortable
         column-key="date"
@@ -18,19 +18,25 @@
         >
     </el-table-column>
     <el-table-column
-        prop="tag"
         label="状态"
-        :filters="[{ text: '转入', value: '转入' }, { text: '转出', value: '转出' }]"
-        :filter-method="filterTag"
         filter-placement="bottom-end">
-      <template #default="scope">
+      <template #default>
         <el-tag
             effect="dark"
-            :type="scope.row.tag === '转入' ? 'success' : 'danger'"
-            disable-transitions>{{scope.row.tag}}</el-tag>
+            type="danger"
+            disable-transitions>转出</el-tag>
       </template>
     </el-table-column>
   </el-table>
+  <div class="party-pagination f-jc-c al-c">
+    <el-pagination background layout="prev,pager,next"
+                   :total="pagination.totalCount"
+                   :page-size="pagination.pageSize"
+                   :current-page="pagination.currPage"
+                   :page-count="pagination.totalPage"
+                   @current-change="currentChange"
+                   class="mt-20"/>
+  </div>
 </select-container-layout>
 </template>
 
@@ -44,32 +50,60 @@
 */
 import {defineComponent, ref} from 'vue';
 import SelectContainerLayout from "@/layout/SelectContainerLayout.vue";
+import {BranchWorkService} from "@/api";
+import {IPagination} from "@/models/IPagination";
 
-const table = [{
-  date: '2016-05-02',
-  name: '王小虎',
-  tag: '转入'
-}, {
-  date: '2016-05-04',
-  name: '王小虎',
-  tag: '转出'
-}, {
-  date: '2016-05-01',
-  name: '王小虎',
-  tag: '转入'
-}, {
-  date: '2016-05-03',
-  name: '王小虎',
-  tag: '转出'
-}];
 
 export default defineComponent({
   name: "PartyRelation",
   components: {SelectContainerLayout},
   setup(){
-    const activeBranch = ref("0");
-    const tableData = ref(table);
-    return {activeBranch,tableData}
+    const active = ref(1);
+    const listArr = ref<>([]);
+    // 加载方法
+    const loadData = (orgId = 1,page= 1): void=>{
+      listArr.value = []
+      BranchWorkService.getPartyTransfer(orgId,page).then(res=>{
+        const {list, ...params} = res.page
+        listArr.value = list     //   填充数据
+        pagination.value = params;  //   初始化pagination对象
+        // 使页面滑动到最顶部
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        })
+      })
+    }
+    // 构建分页对象
+    const pagination = ref<IPagination>({
+      totalCount: 0,
+      pageSize: 0,
+      totalPage: 0,
+      currPage: 0
+    } as IPagination);
+
+    // 分页被改变页数
+    const currentChange = (page: number)=>{
+      loadData(active.value,page)
+    }
+    // 选择支部被改变
+    const selectContainerClick = ()=>{
+      loadData(active.value)
+    }
+    // 初始化方法
+    const initLoad = () =>{
+      loadData(active.value)
+    }
+
+    initLoad(); // 初始化数据加载
+
+    return {
+      active,
+      listArr,
+      currentChange,
+      selectContainerClick,
+      pagination
+    }
   }
 })
 </script>

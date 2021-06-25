@@ -59,3 +59,18 @@ export enum ArticleType{
     BIRTH_SCENES,
     BIRTH_THANKS
 }
+
+export function levelMap(val: number): string{
+    switch (val){
+        case 0:
+            return '好';
+        case 1:
+            return '较好';
+        case 2:
+            return '一般';
+        case 3:
+            return '差';
+        default:
+            return '';
+    }
+}

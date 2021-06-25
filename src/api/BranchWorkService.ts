@@ -10,7 +10,7 @@ import {Methods, request} from "@/utils/https";
 import {ApiEnum, getApi} from "@/api/Api";
 import {Configuration} from "@/api/Configuration";
 
-export class BranchWorkService{
+export class BranchWorkService {
 
 
     /**
@@ -19,9 +19,9 @@ export class BranchWorkService{
      * 作者: Seale
      * 时间: 2021/6/24
      * 版本: V1
-    */
-    public static async getPartyMemberList(orgid = 1,page: number = Configuration.page, limit: number = Configuration.limit): Promise<AxiosResponse>{
-        return request(getApi(ApiEnum.WORK_MEMBER_API),'get',{
+     */
+    public static async getPartyMemberList(orgid = 1, page: number = Configuration.page, limit: number = Configuration.limit): Promise<AxiosResponse> {
+        return request(getApi(ApiEnum.WORK_MEMBER_API), 'get', {
             orgid,
             page,
             limit
@@ -34,9 +34,9 @@ export class BranchWorkService{
      * 作者: Seale
      * 时间: 2021/6/24
      * 版本: V1
-    */
-    public static async getPartyMemberDetail(id: number): Promise<AxiosResponse>{
-        return request(`${getApi(ApiEnum.WORK_MEMBER_DETAIL_API)}${id}`,'get')
+     */
+    public static async getPartyMemberDetail(id: number): Promise<AxiosResponse> {
+        return request(`${getApi(ApiEnum.WORK_MEMBER_DETAIL_API)}${id}`, 'get')
     }
 
     /**
@@ -45,9 +45,9 @@ export class BranchWorkService{
      * 作者: Seale
      * 时间: 2021/6/24
      * 版本: V1
-    */
-    public static async getPartyWorkList(orgId = 1,type=0,page:number = Configuration.page, limit: number = Configuration.limit): Promise<AxiosResponse>{
-        return request(getApi(ApiEnum.BRANCH_PARTYWORK_LIST),Methods.GET,{
+     */
+    public static async getPartyWorkList(orgId = 1, type = 0, page: number = Configuration.page, limit: number = Configuration.limit): Promise<AxiosResponse> {
+        return request(getApi(ApiEnum.BRANCH_PARTYWORK_LIST), Methods.GET, {
             orgId,
             page,
             limit,
@@ -62,9 +62,9 @@ export class BranchWorkService{
      * 作者: Seale
      * 时间: 2021/6/24
      * 版本: V1
-    */
-    public static async getPartyWorkDetail(workId: number): Promise<AxiosResponse>{
-        return request(`${getApi(ApiEnum.BRANCH_WORK_DETAIL_API)}/${workId}`,Methods.GET)
+     */
+    public static async getPartyWorkDetail(workId: number): Promise<AxiosResponse> {
+        return request(`${getApi(ApiEnum.BRANCH_WORK_DETAIL_API)}/${workId}`, Methods.GET)
     }
 
     /**
@@ -73,13 +73,72 @@ export class BranchWorkService{
      * 作者: Seale
      * 时间: 2021/6/25
      * 版本: V1
-    */
-    public static async getStudyNote(orgId = 1,page = 1, limit = 12): Promise<AxiosResponse>{
-        return request(getApi(ApiEnum.STUDY_NOTE_API),Methods.GET,{
+     */
+    public static async getStudyNote(orgId = 1, page = 1, limit = 12): Promise<AxiosResponse> {
+        return request(getApi(ApiEnum.STUDY_NOTE_API), Methods.GET, {
             orgId,
             page,
             limit
         });
     }
 
+    /**
+     * 名称: getPayment
+     * 说明: 党费缴纳列表
+     * 作者: Seale
+     * 时间: 2021/6/25
+     * 版本: V1
+     */
+    public static async getPayment(orgId = 1, page = 1, limit = 12): Promise<AxiosResponse> {
+        return request(getApi(ApiEnum.PARTY_FEE_API), Methods.GET, {
+            orgId,
+            page,
+            limit
+        })
+    }
+
+    /**
+     * 名称: getPartyTransfer
+     * 说明: 党组织关系转接
+     * 作者: Seale
+     * 时间: 2021/6/25
+     * 版本: V1
+     */
+    public static async getPartyTransfer(orgId = 1, page = 1, limit = 12): Promise<AxiosResponse> {
+        return request(getApi(ApiEnum.PARTY_RELATION_API), Methods.GET, {
+            orgId,
+            page,
+            limit
+        })
+    }
+
+    /**
+     * 名称: getBranchYearLevelList
+     * 说明: 党支部年度考核列表
+     * 作者: Seale
+     * 时间: 2021/6/25
+     * 版本: V1
+     */
+    public static async getBranchYearLevelList(orgId = 1, page = 1, limit = 12): Promise<AxiosResponse> {
+        return request(getApi(ApiEnum.BRANCH_YEAR_LEVEL_API), Methods.GET, {
+            orgId,
+            page,
+            limit
+        })
+    }
+
+    /**
+     * 名称: getPartyMemberBirth
+     * 说明: 获取党员政治生日列表
+     * 作者: Seale
+     * 时间: 2021/6/25
+     * 版本: V1
+    */
+    public static async getPartyMemberBirth(orgid = 1, page = 1, limit = 18): Promise<AxiosResponse> {
+        return request(getApi(ApiEnum.PARTY_MEMBER_BIRTH_API),Methods.GET,{
+            orgid,
+            page,
+            limit
+        })
+    }
 }
